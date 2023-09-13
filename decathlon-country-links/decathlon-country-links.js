@@ -3,7 +3,7 @@
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
 // @version      0.1
 // @description  Create a link to jump between dutch and french website of decathlon on the same product
-// @author       You
+// @author       Florian Pasteur
 // @match        https://www.decathlon.nl/*
 // @match        https://www.decathlon.fr/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=decathlon.nl
