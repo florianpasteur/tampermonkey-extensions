@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Decathlon country links
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.3
+// @version      0.4
 // @description  Create a link to jump between dutch and french website of decathlon on the same product
 // @author       Florian Pasteur
 // @match        https://www.decathlon.nl/*
@@ -25,7 +25,7 @@
 
     // Your code here...
 
-    const model = parseInt(document.querySelector('.current-selected-model').innerText)
+    const [model] = /\d+/.exec(document.querySelector('.current-selected-model').innerText)
     const title = document.querySelector('h1')
 
     console.log("Model:", model);
