@@ -25,10 +25,8 @@
 
     // Your code here...
 
-    const model = document.querySelector('.current-selected-model').innerText
+    const model = parseInt(document.querySelector('.current-selected-model').innerText)
     const title = document.querySelector('h1')
-
-    console.log("Hello wolrd", model)
 
     setTimeout(() => {
 
