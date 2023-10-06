@@ -42,7 +42,6 @@
         }
     }
 
-
     function addHeader() {
         const header = document.querySelector('th[id="username"]');
         insertElementBefore(header, createUserIDHeader());
