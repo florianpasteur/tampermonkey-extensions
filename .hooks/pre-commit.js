@@ -11,7 +11,7 @@ const os = require('os');
 
             let versions = new RegExp("^// @version +(\d\.)+").exec(content);
 
-            console.log(versions);
+            console.log(file, versions);
 
             if (versions) {
 
