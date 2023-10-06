@@ -43,7 +43,7 @@
                 })
             }
         }
-    }, 3000)
+    }, 1000)
 
     function addHeader() {
         const header = document.querySelector('th[id="username"]');
