@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download manager hierarchy
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.1
+// @version      0.2
 // @description  Download manager hierarchy per user
 // @author       Florian Pasteur
 // @match        https://backbase.bamboohr.com/*
@@ -16,6 +16,7 @@
 
     GM_registerMenuCommand("Download manager report", async function (event) {
         console.log("Loading");
+        const overlay = showOverlay();
 
         const bambooData = await getBambooData();
         const orgData = await getOrgData();
@@ -28,7 +29,7 @@
                 e.lastName,
                 e.email,
                 e.department,
-                ...e.managers.map(m => `${m.name}`).reverse()
+                ...e.managers.slice(1).map(m => `${m.name}`).reverse()
             ].join(',')
         })
 
@@ -36,6 +37,7 @@
 
         await exportResults([header, ...columns].join("\n"))
 
+        hideOverlay(overlay);
 
     }, {
         autoClose: true
@@ -95,4 +97,58 @@ function getManagers(employee) {
 async function exportResults(data) {
     var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
     saveAs(blob, 'employees-with-all-managers.csv');
+}
+
+function showOverlay() {
+    // Create the overlay element
+    const overlay = document.createElement('div');
+    overlay.style.display = 'none';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    overlay.style.zIndex = '9999';
+
+    // Create the loader element
+    const loader = document.createElement('div');
+    loader.style.position = 'absolute';
+    loader.style.top = '50%';
+    loader.style.left = '50%';
+    loader.style.transform = 'translate(-50%, -50%)';
+    loader.style.border = '4px solid #f3f3f3';
+    loader.style.borderTop = '4px solid #3498db';
+    loader.style.borderRadius = '50%';
+    loader.style.width = '50px';
+    loader.style.height = '50px';
+    loader.style.animation = 'spin 2s linear infinite';
+
+    // Create the keyframes for the loading animation
+    const keyframes = document.createElement('style');
+    keyframes.innerHTML = `
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    `;
+
+    // Append the loader and keyframes to the overlay
+    overlay.appendChild(loader);
+    overlay.appendChild(keyframes);
+
+    // Append the overlay to the body
+    document.body.appendChild(overlay);
+
+    // Display the overlay
+    overlay.style.display = 'block';
+
+    return overlay
+}
+
+// Function to hide and remove the overlay
+function hideOverlay(overlay) {
+    if (overlay) {
+        document.body.removeChild(overlay);
+    }
 }
