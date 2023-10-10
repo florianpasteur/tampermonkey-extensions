@@ -11,7 +11,7 @@
 // @require     https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js
 // ==/UserScript==
 
-(async function () {
+(function () {
     'use strict';
 
     GM_registerMenuCommand("Download manager report", async function (event) {
