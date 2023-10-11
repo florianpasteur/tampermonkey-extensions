@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download manager hierarchy
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @description  Download manager hierarchy per user
 // @author       Florian Pasteur
 // @match        https://backbase.bamboohr.com/*
@@ -17,6 +17,8 @@
     GM_registerMenuCommand("Download manager report", async function (event) {
         console.log("Loading");
         const overlay = showOverlay();
+
+        try {
 
         const bambooData = await getBambooData();
         const orgData = await getOrgData();
@@ -37,7 +39,15 @@
 
         await exportResults([header, ...columns].join("\n"))
 
+
+        } catch (e) {
+
         hideOverlay(overlay);
+        const htmlDivElement = showErrorOverlay();
+        setTimeout(() => hideOverlay(htmlDivElement), 2000)
+        }
+        hideOverlay(overlay);
+
 
     }, {
         autoClose: true
@@ -136,6 +146,38 @@ function showOverlay() {
     // Append the loader and keyframes to the overlay
     overlay.appendChild(loader);
     overlay.appendChild(keyframes);
+
+    // Append the overlay to the body
+    document.body.appendChild(overlay);
+
+    // Display the overlay
+    overlay.style.display = 'block';
+
+    return overlay
+}
+function showErrorOverlay() {
+    // Create the overlay element
+    const overlay = document.createElement('div');
+    overlay.style.display = 'none';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    overlay.style.zIndex = '9999';
+
+    // Create the loader element
+    const loader = document.createElement('div');
+    loader.style.position = 'absolute';
+    loader.style.top = '50%';
+    loader.style.left = '50%';
+    loader.style.fontSize = '10em';
+    loader.innerText = '⚠️';
+
+
+    // Append the loader and keyframes to the overlay
+    overlay.appendChild(loader);
 
     // Append the overlay to the body
     document.body.appendChild(overlay);
