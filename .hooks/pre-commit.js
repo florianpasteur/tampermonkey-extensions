@@ -3,27 +3,33 @@ const fsSync = require('fs');
 const path = require('path');
 const os = require('os');
 
-// WIP
-
 (async function () {
 
     for (let file of process.argv) {
         if (fsSync.existsSync(file)) {
-            let content = (await fs.readFile(file)).toString();
+            let fileContent = (await fs.readFile(file)).toString();
 
-            let versionResult = new RegExp("// @version +(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)").exec(content);
-
-            console.log(versionResult);
+            let versionResult = new RegExp("// @version +(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)").exec(fileContent);
 
             if (versionResult && versionResult[0]) {
-                let version = versionResult[0].split(' ').pop();
-                console.log(version);
-                let numbers = new RegExp("(\\d+)").exec(version);
+                const currentVersionLine = versionResult[0];
+                const currentVersion = currentVersionLine.split(' ').pop();
+                console.log(currentVersion);
+                const numbers = currentVersion
+                    .split('.')
+                    .reverse()
+                    .map(e => parseInt(e));
 
-                console.log(numbers);
+                numbers[0]++;
 
+                const newVersion = numbers.reverse().join('.');
+
+                const newVersionLine = currentVersionLine.replace(currentVersion, newVersion);
+
+                const updatedVersion = fileContent.replace(currentVersionLine, newVersionLine);
+
+                await fs.writeFile(file, updatedVersion)
             }
-
         }
     }
 
