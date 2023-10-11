@@ -14,7 +14,7 @@
 (function () {
     'use strict';
 
-    GM_registerMenuCommand("Download manager report", async function (event) {
+    GM_registerMenuCommand("Download report", async function (event) {
         console.log("Loading");
         const overlay = showOverlay();
 
