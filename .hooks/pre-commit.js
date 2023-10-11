@@ -14,7 +14,6 @@ const os = require('os');
             if (versionResult && versionResult[0]) {
                 const currentVersionLine = versionResult[0];
                 const currentVersion = currentVersionLine.split(' ').pop();
-                console.log(currentVersion);
                 const numbers = currentVersion
                     .split('.')
                     .reverse()
@@ -29,6 +28,9 @@ const os = require('os');
                 const updatedVersion = fileContent.replace(currentVersionLine, newVersionLine);
 
                 await fs.writeFile(file, updatedVersion)
+
+                // Not a debug line, used to stage after in the hook
+                console.log(file)
             }
         }
     }

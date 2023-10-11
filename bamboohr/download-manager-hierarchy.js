@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download manager hierarchy
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.3
+// @version      0.5
 // @description  Download manager hierarchy per user
 // @author       Florian Pasteur
 // @match        https://backbase.bamboohr.com/*
