@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download Manager Report
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.27
+// @version      0.28
 // @description  Download manager hierarchy per user
 // @author       Florian Pasteur
 // @match        https://backbase.bamboohr.com/*
@@ -31,7 +31,7 @@
                 e.lastName,
                 e.email,
                 e.department,
-                ...e.managers.slice(1).map(m => `${m.name}`).reverse()
+                ...e.managers.map(m => `${m.name}`).reverse()
             ].join(',')
         })
 
@@ -92,7 +92,7 @@ function mergeBambooDataAndOrgData(bambooData, orgData) {
 
 function getManagers(employee) {
     const managers = [];
-    while (employee && employee.parent) {
+    while (employee && employee.parent && employee.parent.id) {
         managers.push(employee.parent);
         employee = employee.parent;
     }
