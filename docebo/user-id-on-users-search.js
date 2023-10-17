@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         UserId on User search docebo
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.4
 // @description  Add user id on the search table of users
 // @author       Florian Pasteur
 // @match        https://learn.backbase.com/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=backbase.com
+// @match        https://*.docebosaas.com/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=docebo.com
 // @grant none
 // ==/UserScript==
 
