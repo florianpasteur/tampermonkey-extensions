@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise insert wistia transcript
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.6
+// @version      0.7
 // @description  Insert wistia transcript at caret
 // @author       Florian Pasteur
 // @match        https://rise.articulate.com/*
