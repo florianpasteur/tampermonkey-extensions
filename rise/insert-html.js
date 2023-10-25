@@ -1,19 +1,20 @@
 // ==UserScript==
-// @name         Rise insert html
+// @name         Rise insert wistia transcript
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
-// @description  Insert custom html at current carret
+// @version      0.3
+// @description  Insert wistia transcript at caret
 // @author       Florian Pasteur
 // @match        https://rise.articulate.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=articulate.com
 // @grant        none
 // @run-at       context-menu
 // @require      https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js
 
 
 // ==/UserScript==
 
-(function() {
+(async function() {
     'use strict';
 
     function pasteHtmlAtCaret(html) {
@@ -102,9 +103,48 @@ h1, h2, h3, h4, h5, h6 {
         return content
     }
 
+    async function downloadTranscript(link) {
+        const videoId = link.split('/').pop();
+        try {
+            const videoMetadata = await axios.get(`https://fast.wistia.com/embed/medias/${videoId}.json`);
+            const captions = videoMetadata.data?.media?.captions?.[0]?.text;
 
-    pasteHtmlAtCaret(generateHtmlFromMarkdownWithCustomStyle("# Hello \n **CONTENNTNTTTT**"));
-    console.log("Inserted")
+            const chapters = videoMetadata.data?.media?.embedOptions?.plugin?.chapters;
+            if (chapters && captions && chapters.on === "true") {
+                const videoCaptionsWithTime = await axios.get(`https://fast.wistia.com/embed/captions/${videoId}.json`);
 
-    // Your code here...
+                let captionsLines = videoCaptionsWithTime.data?.captions?.[0]?.hash?.lines;
+                if (captionsLines && chapters.chapterList) {
+                    let chaptersAsCaptions = chapters.chapterList.map((chapter) => {
+                        const chapterTime = parseFloat(chapter.time)
+                        return ({
+                            "start": chapterTime,
+                            "end": chapterTime,
+                            "text": [
+                                "## " + chapter.title + "\n\n"
+                            ]
+                        });
+                    });
+
+                    const captionsWithChapters = [...chaptersAsCaptions, ...captionsLines].sort((a, b) => a.start - b.start).map(caption => caption.text.join(" ")).join(" ").split('. ').join('.\n\n');
+
+                    if (captionsWithChapters) {
+                        return captionsWithChapters;
+                    }
+                }
+
+            }
+            return captions || '';
+        } catch (e) {
+            console.error("Error while getting transcript")
+            console.error(e)
+        }
+        return '';
+    }
+    let wistiaUrl = prompt("Please enter wistia URL");
+
+    if (wistiaUrl != null) {
+        const transcript = await downloadTranscript(wistiaUrl);
+        pasteHtmlAtCaret(generateHtmlFromMarkdownWithCustomStyle(transcript));
+    }
 })();
