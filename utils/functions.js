@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Functions utils
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @description  A collection of utils function to be used in the terminal or in a JS script
 // @author       Florian Pasteur
 // @match        *
@@ -9,10 +9,13 @@
 // @grant        none
 
 
-function base64ToString() {
-    return btoa(...arguments)
-}
+(function () {
+    window.base64ToString = function () {
+        return atob(...arguments);
+    }
 
-function base64ToString() {
-    return atob(...arguments)
-}
+    window.base64ToString = function () {
+        return btoa(...arguments);
+    }
+})();
+
