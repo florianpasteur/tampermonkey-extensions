@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Functions utils
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.4
+// @version      0.5
 // @description  A collection of utils function to be used in the terminal or in a JS script
 // @author       Florian Pasteur
 // @match        *
@@ -78,6 +78,36 @@
      */
     window.findAllBySelector = function (selector, _document = document) {
         return Array.from(_document.querySelectorAll(selector))
+    }
+
+    /**
+     * Safely save data in locate storage but merge it with current value for later use (after page refresh for example)
+     * @param {*} data object to save
+     * @param {string} [name=browserAutomation] name of the object to save
+     */
+    window.saveUpsert = function (data, name = 'browserAutomation') {
+        localStorage.setItem(name, JSON.stringify({
+            ...load(name),
+            ...data
+        }));
+    }
+
+    /**
+     * Save data in locate storage for later use (after page refresh for example)
+     * @param {*} data object to save
+     * @param {string} [name=browserAutomation] name of the object to save
+     */
+    window.save = function (data, name = 'browserAutomation') {
+        localStorage.setItem(name, JSON.stringify(data));
+    }
+
+
+    /**
+     * Load data from locate storage
+     * @param {string} [name=browserAutomation] name of the object to load
+     */
+    window.load = function (name = 'browserAutomation') {
+        return JSON.parse(localStorage.getItem(name));
     }
 })();
 
