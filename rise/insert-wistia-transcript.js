@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise insert wistia transcript
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.7
+// @version      0.8
 // @description  Insert wistia transcript at caret
 // @author       Florian Pasteur
 // @match        https://rise.articulate.com/*
@@ -10,8 +10,6 @@
 // @run-at       context-menu
 // @require      https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js
-
-
 // ==/UserScript==
 
 (async function () {
