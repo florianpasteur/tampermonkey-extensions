@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise Content Downloader
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @description  Download rise course content as markdown files
 // @author       Florian Pasteur
 // @match        https://*.articulate.com/preview/*
@@ -24,17 +24,18 @@ const turndownService = new TurndownService();
     const courseId = window.location.href.replace(window.location.hash, '').split('/').pop();
     const courseData = await getCourseData(courseId);
 
-    for (let lesson of courseData.course.lessons.slice(1)) {
+    for (let lesson of courseData.course.lessons.slice(0, 1)) {
         for (let item of lesson.items) {
             types.add(
                 `${item.items.length}`,
             );
 
-            console.log(getItemKey(item), itemToMarkdown(item));
+            // console.log(getItemKey(item), itemToMarkdown(item));
+            console.log(itemToMarkdown(item));
         }
     }
 
-    console.log(Array.from(types));
+    // console.log(Array.from(types));
 
 
     async function getCourseData(lessonId) {
@@ -45,7 +46,8 @@ const turndownService = new TurndownService();
 
 function itemToMarkdown(item) {
     if (item.items.length > 1) {
-        throw new Error('Item has length > 1')
+        console.log(item.items);
+        // throw new Error('Item has length > 1')
     }
     const content = item.items[0];
     const itemKey = getItemKey(item);
@@ -55,23 +57,26 @@ function itemToMarkdown(item) {
         case "divider divider divider":
             return "----";
         case "image image hero":
-            return content;
+            return "![" + content.media.image.originalUrl + "](" + content.media.image.key + ")";
+        case "image image text aside":
+            return  "![" + content.media.image.originalUrl + "](" + content.media.image.key + " \"float-right\")" +
+                "\n\n" + turndownService.turndown(content.paragraph);
         case "interactive interactive accordion":
-            return content;
+            return "<details>\n<summary>" + content.title + "</summary>\n\n" + content.description + "</details>";
         case "multimedia multimedia attachment":
-            return content;
+            return "[" + content.media.attachment.originalUrl + "](" + content.media.attachment.key + ")";
         case "multimedia multimedia embed":
-            return content;
+                return "[video](" + readWistiaUrl(content.media.embed.src) + " \"video\"]";
         case "text impact a":
-            return content;
+            return "###" + turndownService.turndown(content.heading);
         case "text impact b":
-            return content;
+            return "####" + turndownService.turndown(content.heading);
         case "text impact c":
-            return content;
+            return "#####" + turndownService.turndown(content.heading);
         case "text impact d":
-            return content;
+            return "######" + turndownService.turndown(content.heading);
         case "text impact note":
-            return content;
+            return turndownService.turndown(content.paragraph).split('\n').map(line => `> ${line}`).join('\n');
         case "text text heading":
             return "# " + turndownService.turndown(content.heading);
         case "text text subheading":
@@ -81,7 +86,7 @@ function itemToMarkdown(item) {
         case "text text paragraph":
             return turndownService.turndown(content.paragraph);
         case "text text subheading paragraph":
-            return content;
+            return "## " + turndownService.turndown(content.heading) + "\n" + turndownService.turndown(content.paragraph);
 
         default:
             throw new Error('Do not know this element: ' + itemKey)
@@ -91,4 +96,10 @@ function itemToMarkdown(item) {
 
 function getItemKey(item) {
     return `${item.type || "no_type"} ${item.family || "no_family"} ${item.variant || "no_variant"}`
+}
+
+function readWistiaUrl(src) {
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(src, 'text/html');
+    return htmlDoc.querySelector('iframe').src;
 }
