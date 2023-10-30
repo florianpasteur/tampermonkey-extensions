@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise Content Downloader
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.3
+// @version      0.4
 // @description  Download rise course content as markdown files
 // @author       Florian Pasteur
 // @match        https://*.articulate.com/preview/*
@@ -57,36 +57,35 @@ function itemToMarkdown(item) {
         case "divider divider divider":
             return "----";
         case "image image hero":
-            return "![" + content.media.image.originalUrl + "](" + content.media.image.key + ")";
+            return `![${content.media.image.originalUrl}](${content.media.image.key})`;
         case "image image text aside":
-            return  "![" + content.media.image.originalUrl + "](" + content.media.image.key + " \"float-right\")" +
-                "\n\n" + turndownService.turndown(content.paragraph);
+            return  `![${content.media.image.originalUrl}](${content.media.image.key} "float-right")\n\n${turndownService.turndown(content.paragraph)}`;
         case "interactive interactive accordion":
-            return "<details>\n<summary>" + content.title + "</summary>\n\n" + content.description + "</details>";
+            return `<details>\n<summary>${content.title}</summary>\n\n${content.description}</details>`;
         case "multimedia multimedia attachment":
-            return "[" + content.media.attachment.originalUrl + "](" + content.media.attachment.key + ")";
+            return `[${content.media.attachment.originalUrl}](${content.media.attachment.key})`;
         case "multimedia multimedia embed":
-                return "[video](" + readWistiaUrl(content.media.embed.src) + " \"video\"]";
+                return `[video](${readWistiaUrl(content.media.embed.src)} "video"]`;
         case "text impact a":
-            return "###" + turndownService.turndown(content.heading);
+            return `###${turndownService.turndown(content.heading)}`;
         case "text impact b":
-            return "####" + turndownService.turndown(content.heading);
+            return `####${turndownService.turndown(content.heading)}`;
         case "text impact c":
-            return "#####" + turndownService.turndown(content.heading);
+            return `#####${turndownService.turndown(content.heading)}`;
         case "text impact d":
-            return "######" + turndownService.turndown(content.heading);
+            return `######${turndownService.turndown(content.heading)}`;
         case "text impact note":
             return turndownService.turndown(content.paragraph).split('\n').map(line => `> ${line}`).join('\n');
         case "text text heading":
-            return "# " + turndownService.turndown(content.heading);
+            return `# ${turndownService.turndown(content.heading)}`;
         case "text text subheading":
-            return "## " + turndownService.turndown(content.heading);
+            return `## ${turndownService.turndown(content.heading)}`;
         case "text text heading paragraph":
-            return "# " + turndownService.turndown(content.heading) + "\n" + turndownService.turndown(content.paragraph);
+            return `# ${turndownService.turndown(content.heading)}\n\n${turndownService.turndown(content.paragraph)}`;
         case "text text paragraph":
             return turndownService.turndown(content.paragraph);
         case "text text subheading paragraph":
-            return "## " + turndownService.turndown(content.heading) + "\n" + turndownService.turndown(content.paragraph);
+            return `## ${turndownService.turndown(content.heading)}\n\n${turndownService.turndown(content.paragraph)}`;
 
         default:
             throw new Error('Do not know this element: ' + itemKey)
