@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise Content Downloader
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.4
+// @version      0.5
 // @description  Download rise course content as markdown files
 // @author       Florian Pasteur
 // @match        https://*.articulate.com/preview/*
@@ -23,6 +23,8 @@ const turndownService = new TurndownService();
 
     const courseId = window.location.href.replace(window.location.hash, '').split('/').pop();
     const courseData = await getCourseData(courseId);
+
+    console.log(courseData);
 
     for (let lesson of courseData.course.lessons.slice(0, 1)) {
         for (let item of lesson.items) {
