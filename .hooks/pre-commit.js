@@ -2,33 +2,30 @@ const fs = require('fs/promises');
 const fsSync = require('fs');
 const path = require('path');
 const os = require('os');
-
+const exec = require('child_process').exec;
 
 async function updateDocumentation() {
 
     const allFiles = await getAllFilesRecursively('.');
     const allMetadata = await getAllFilesMetadata(allFiles);
 
-    function insertScreenshotIfExists(metadata) {
-        const screenshotPath = 'docs/' + metadata.filename + '.png';
-        if (fsSync.existsSync(screenshotPath)) {
-            return `![Screenshot for ${metadata['@name']}](${screenshotPath})`
-        }
-        return ''
-    }
+    const newDocumentationSection = getNewDocumentationSection(allMetadata);
 
-    const documentation = allMetadata.map(metadata => `
-# ${metadata['@name']} // version ${metadata['@version']} 
+    await replaceLivingDocumentationInFile(newDocumentationSection, "README.md")
 
-${metadata['@description']}
 
-[${metadata['filename']}](${metadata['relativePath']})
-
-${insertScreenshotIfExists(metadata)}
-----
-`).join('\n');
-
-    await replaceLivingDocumentationInFile(documentation, "README.md")
+    exec('git add README.md',
+        function (error, stdout, stderr) {
+            if (stdout) {
+                console.log('stdout: ' + stdout);
+            }
+            if (stderr) {
+                console.error('stderr: ' + stderr);
+            }
+            if (error !== null) {
+                console.log('exec error: ' + error);
+            }
+        });
 
 
     async function getAllFilesRecursively(dir, fileList = []) {
@@ -78,6 +75,28 @@ ${insertScreenshotIfExists(metadata)}
             throw new Error("Couldn't find location for living documentation ie: <!-- start-living-doc --><!-- end-living-doc --> tags")
         }
     }
+
+    function insertScreenshotIfExists(metadata) {
+        const screenshotPath = 'docs/' + metadata.filename + '.png';
+        if (fsSync.existsSync(screenshotPath)) {
+            return `![Screenshot for ${metadata['@name']}](${screenshotPath})`
+        }
+        return ''
+    }
+
+    function getNewDocumentationSection(allMetadata) {
+        return allMetadata.map(metadata => `
+# ${metadata['@name']} // version ${metadata['@version']} 
+
+${metadata['@description']}
+
+[${metadata['filename']}](${metadata['relativePath']})
+
+${insertScreenshotIfExists(metadata)}
+----
+`).join('\n');
+    }
+
 }
 
 (async function () {
