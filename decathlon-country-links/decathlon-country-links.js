@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         Decathlon country links
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.4
+// @version      0.5
+// @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  Create a link to jump between dutch and french website of decathlon on the same product
 // @author       Florian Pasteur
 // @match        https://www.decathlon.nl/*

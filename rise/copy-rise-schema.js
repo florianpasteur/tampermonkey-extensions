@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         Get rise-schema.json content
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
+// @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  Copy list of lessons to be paste on the  rise-schema.json for a markdown-to-rise-import
 // @author       Florian Pasteur
 // @match        https://rise.articulate.com/*

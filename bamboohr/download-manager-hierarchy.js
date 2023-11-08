@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         Download Manager Report
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.29
+// @version      0.30
+// @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  Download manager hierarchy per user
 // @author       Florian Pasteur
 // @match        https://backbase.bamboohr.com/*
