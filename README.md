@@ -6,7 +6,7 @@ Bunch of extensions for Tampermonkey
 
 # Download Manager Report // version 0.31 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=bamboohr.com)
+Download manager hierarchy per user
 
 [download-manager-hierarchy.js](bamboohr/download-manager-hierarchy.js)
 
@@ -16,7 +16,7 @@ Bunch of extensions for Tampermonkey
 
 # Decathlon country links // version 0.5 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=decathlon.nl)
+Create a link to jump between dutch and french website of decathlon on the same product
 
 [decathlon-country-links.js](decathlon-country-links/decathlon-country-links.js)
 
@@ -26,7 +26,7 @@ Bunch of extensions for Tampermonkey
 
 # UserId on User search docebo // version 0.5 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=docebo.com)
+Add user id on the search table of users
 
 [user-id-on-users-search.js](docebo/user-id-on-users-search.js)
 
@@ -36,7 +36,7 @@ Bunch of extensions for Tampermonkey
 
 # Rise Content Downloader // version 0.6 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=articulate.com)
+Download rise course content as markdown files
 
 [copy-lesson-content.js](rise/copy-lesson-content.js)
 
@@ -46,7 +46,7 @@ Bunch of extensions for Tampermonkey
 
 # Get rise-schema.json content // version 0.3 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=articulate.com)
+Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-import
 
 [copy-rise-schema.js](rise/copy-rise-schema.js)
 
@@ -56,7 +56,7 @@ Bunch of extensions for Tampermonkey
 
 # Rise insert wistia transcript // version 0.10 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=articulate.com)
+Insert wistia transcript at caret
 
 [insert-wistia-transcript.js](rise/insert-wistia-transcript.js)
 
@@ -66,7 +66,7 @@ Bunch of extensions for Tampermonkey
 
 # Edit page // version 0.7 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=js.org)
+Make entire page editable, useful to change data before taking screenshot
 
 [edit-html-page.js](utils/edit-html-page.js)
 
@@ -76,7 +76,7 @@ Bunch of extensions for Tampermonkey
 
 # Functions utils // version 0.6 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=js.org)
+A collection of utils function to be used in the terminal or in a JS script
 
 [functions.js](utils/functions.js)
 
@@ -86,7 +86,7 @@ Bunch of extensions for Tampermonkey
 
 # Zwift Fan Activity watcher // version 0.3 
 
-![Icon](https://www.google.com/s2/favicons?sz=64&domain=zwift.com)
+undefined
 
 [activity-watcher.js](zwift/activity-watcher.js)
 
