@@ -22,6 +22,8 @@ async function updateDocumentation() {
 
 ![Icon](${metadata['@icon']})
 
+${metadata['@description']}
+
 [${metadata['filename']}](${metadata['relativePath']})
 
 ${insertScreenshotIfExists(metadata)}
