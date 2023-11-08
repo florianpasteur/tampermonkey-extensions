@@ -18,12 +18,10 @@ async function updateDocumentation() {
     }
 
     const documentation = allMetadata.map(metadata => `
-<h1>
-    <img src="${metadata['@icon']}" width="128" height="128" style="float:left;" alt="icon" />
-    ${metadata['@name']} // version ${metadata['@version']} 
-</h1>
+# ${metadata['@name']} // version ${metadata['@version']} 
+<img src="${metadata['@icon']}" alt="icon" style="display: inline-block; max-height: 1em;"> ${metadata['@description']}
 
-${metadata['@description']}
+[${metadata['filename']}](${metadata['relativePath']})
 
 ${insertScreenshotIfExists(metadata)}
 ----
@@ -59,7 +57,7 @@ ${insertScreenshotIfExists(metadata)}
                 continue;
             }
             const tamperMonkeyMetadata = fileContent.split('\n').filter(line => line.startsWith("// @")).map(line => line.split(' ')).reduce((metadata, [_, metadataName, ...value]) => ({[metadataName]: value.filter(v => v).join(' '), ...metadata}), {});
-            metadata.push({...tamperMonkeyMetadata, filename: path.basename(file)})
+            metadata.push({...tamperMonkeyMetadata, filename: path.basename(file), relativePath: file})
         }
         return metadata;
     }

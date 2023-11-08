@@ -4,100 +4,82 @@ Bunch of extensions for Tampermonkey
 
 <!-- start-living-doc -->
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=bamboohr.com" width="128" height="128" style="float:left;" alt="icon" />
-    Download Manager Report // version 0.31 
-</h1>
+# Download Manager Report // version 0.31 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=bamboohr.com" alt="icon" style="display: inline-block; max-height: 1em;"> Download manager hierarchy per user
 
-Download manager hierarchy per user
+[download-manager-hierarchy.js](bamboohr/download-manager-hierarchy.js)
 
 
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=decathlon.nl" width="128" height="128" style="float:left;" alt="icon" />
-    Decathlon country links // version 0.5 
-</h1>
+# Decathlon country links // version 0.5 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=decathlon.nl" alt="icon" style="display: inline-block; max-height: 1em;"> Create a link to jump between dutch and french website of decathlon on the same product
 
-Create a link to jump between dutch and french website of decathlon on the same product
+[decathlon-country-links.js](decathlon-country-links/decathlon-country-links.js)
 
 ![Screenshot for Decathlon country links](docs/decathlon-country-links.js.png)
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=docebo.com" width="128" height="128" style="float:left;" alt="icon" />
-    UserId on User search docebo // version 0.5 
-</h1>
+# UserId on User search docebo // version 0.5 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=docebo.com" alt="icon" style="display: inline-block; max-height: 1em;"> Add user id on the search table of users
 
-Add user id on the search table of users
+[user-id-on-users-search.js](docebo/user-id-on-users-search.js)
 
 
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" width="128" height="128" style="float:left;" alt="icon" />
-    Rise Content Downloader // version 0.6 
-</h1>
+# Rise Content Downloader // version 0.6 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" alt="icon" style="display: inline-block; max-height: 1em;"> Download rise course content as markdown files
 
-Download rise course content as markdown files
+[copy-lesson-content.js](rise/copy-lesson-content.js)
 
 
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" width="128" height="128" style="float:left;" alt="icon" />
-    Get rise-schema.json content // version 0.3 
-</h1>
+# Get rise-schema.json content // version 0.3 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" alt="icon" style="display: inline-block; max-height: 1em;"> Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-import
 
-Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-import
+[copy-rise-schema.js](rise/copy-rise-schema.js)
 
 
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" width="128" height="128" style="float:left;" alt="icon" />
-    Rise insert wistia transcript // version 0.10 
-</h1>
+# Rise insert wistia transcript // version 0.10 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" alt="icon" style="display: inline-block; max-height: 1em;"> Insert wistia transcript at caret
 
-Insert wistia transcript at caret
+[insert-wistia-transcript.js](rise/insert-wistia-transcript.js)
 
 
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=js.org" width="128" height="128" style="float:left;" alt="icon" />
-    Edit page // version 0.7 
-</h1>
+# Edit page // version 0.7 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=js.org" alt="icon" style="display: inline-block; max-height: 1em;"> Make entire page editable, useful to change data before taking screenshot
 
-Make entire page editable, useful to change data before taking screenshot
+[edit-html-page.js](utils/edit-html-page.js)
 
 
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=js.org" width="128" height="128" style="float:left;" alt="icon" />
-    Functions utils // version 0.6 
-</h1>
+# Functions utils // version 0.6 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=js.org" alt="icon" style="display: inline-block; max-height: 1em;"> A collection of utils function to be used in the terminal or in a JS script
 
-A collection of utils function to be used in the terminal or in a JS script
+[functions.js](utils/functions.js)
 
 
 ----
 
 
-<h1>
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=zwift.com" width="128" height="128" style="float:left;" alt="icon" />
-    Zwift Fan Activity watcher // version 0.3 
-</h1>
+# Zwift Fan Activity watcher // version 0.3 
+<img src="https://www.google.com/s2/favicons?sz=64&domain=zwift.com" alt="icon" style="display: inline-block; max-height: 1em;"> undefined
 
-undefined
+[activity-watcher.js](zwift/activity-watcher.js)
 
 
 ----
