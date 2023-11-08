@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Download Manager Report
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.30
+// @version      0.31
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  Download manager hierarchy per user
 // @author       Florian Pasteur
-// @match        https://backbase.bamboohr.com/*
+// @match        https://*.bamboohr.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bamboohr.com
 // @run-at       context-menu
 // @require      https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js
@@ -51,12 +51,13 @@
 
 
 async function getBambooData() {
-    return (await axios.get('https://backbase.bamboohr.com/employee_directory/ajax/get_directory_info')).data;
+    debugger
+    return (await axios.get(location.hostname + '/employee_directory/ajax/get_directory_info')).data;
 }
 
 
 async function getOrgData() {
-    const orgData = (await axios.get('https://backbase.bamboohr.com/employees/orgchart.php?pin')).data;
+    const orgData = (await axios.get(location.hostname + '/employees/orgchart.php?pin')).data;
     let scriptTag = new RegExp('<script type="application/json" id="orgchart__data_json">((.|\\n)*)</script>').exec(orgData);
 
     let orgTree = JSON.parse(scriptTag[1].split('</script>')[0]);

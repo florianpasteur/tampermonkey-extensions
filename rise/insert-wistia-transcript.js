@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise insert wistia transcript
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.9
+// @version      0.10
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  Insert wistia transcript at caret
 // @author       Florian Pasteur
@@ -88,7 +88,7 @@
         return '';
     }
 
-    let wistiaUrl = prompt("Please enter wistia URL", "https://backbase-11.wistia.com/medias/....");
+    let wistiaUrl = prompt("Please enter wistia URL", "https://company.wistia.com/medias/....");
 
     if (wistiaUrl != null) {
         const transcript = await downloadTranscript(wistiaUrl);
