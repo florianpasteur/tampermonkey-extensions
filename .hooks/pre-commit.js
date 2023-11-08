@@ -19,7 +19,8 @@ async function updateDocumentation() {
 
     const documentation = allMetadata.map(metadata => `
 # ${metadata['@name']} // version ${metadata['@version']} 
-<img src="${metadata['@icon']}" alt="icon" style="display: inline-block; max-height: 1em;"> ${metadata['@description']}
+
+![Icon](${metadata['@icon']})
 
 [${metadata['filename']}](${metadata['relativePath']})
 

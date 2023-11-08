@@ -5,7 +5,8 @@ Bunch of extensions for Tampermonkey
 <!-- start-living-doc -->
 
 # Download Manager Report // version 0.31 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=bamboohr.com" alt="icon" style="display: inline-block; max-height: 1em;"> Download manager hierarchy per user
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=bamboohr.com)
 
 [download-manager-hierarchy.js](bamboohr/download-manager-hierarchy.js)
 
@@ -14,7 +15,8 @@ Bunch of extensions for Tampermonkey
 
 
 # Decathlon country links // version 0.5 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=decathlon.nl" alt="icon" style="display: inline-block; max-height: 1em;"> Create a link to jump between dutch and french website of decathlon on the same product
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=decathlon.nl)
 
 [decathlon-country-links.js](decathlon-country-links/decathlon-country-links.js)
 
@@ -23,7 +25,8 @@ Bunch of extensions for Tampermonkey
 
 
 # UserId on User search docebo // version 0.5 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=docebo.com" alt="icon" style="display: inline-block; max-height: 1em;"> Add user id on the search table of users
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=docebo.com)
 
 [user-id-on-users-search.js](docebo/user-id-on-users-search.js)
 
@@ -32,7 +35,8 @@ Bunch of extensions for Tampermonkey
 
 
 # Rise Content Downloader // version 0.6 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" alt="icon" style="display: inline-block; max-height: 1em;"> Download rise course content as markdown files
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=articulate.com)
 
 [copy-lesson-content.js](rise/copy-lesson-content.js)
 
@@ -41,7 +45,8 @@ Bunch of extensions for Tampermonkey
 
 
 # Get rise-schema.json content // version 0.3 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" alt="icon" style="display: inline-block; max-height: 1em;"> Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-import
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=articulate.com)
 
 [copy-rise-schema.js](rise/copy-rise-schema.js)
 
@@ -50,7 +55,8 @@ Bunch of extensions for Tampermonkey
 
 
 # Rise insert wistia transcript // version 0.10 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=articulate.com" alt="icon" style="display: inline-block; max-height: 1em;"> Insert wistia transcript at caret
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=articulate.com)
 
 [insert-wistia-transcript.js](rise/insert-wistia-transcript.js)
 
@@ -59,7 +65,8 @@ Bunch of extensions for Tampermonkey
 
 
 # Edit page // version 0.7 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=js.org" alt="icon" style="display: inline-block; max-height: 1em;"> Make entire page editable, useful to change data before taking screenshot
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=js.org)
 
 [edit-html-page.js](utils/edit-html-page.js)
 
@@ -68,7 +75,8 @@ Bunch of extensions for Tampermonkey
 
 
 # Functions utils // version 0.6 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=js.org" alt="icon" style="display: inline-block; max-height: 1em;"> A collection of utils function to be used in the terminal or in a JS script
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=js.org)
 
 [functions.js](utils/functions.js)
 
@@ -77,7 +85,8 @@ Bunch of extensions for Tampermonkey
 
 
 # Zwift Fan Activity watcher // version 0.3 
-<img src="https://www.google.com/s2/favicons?sz=64&domain=zwift.com" alt="icon" style="display: inline-block; max-height: 1em;"> undefined
+
+![Icon](https://www.google.com/s2/favicons?sz=64&domain=zwift.com)
 
 [activity-watcher.js](zwift/activity-watcher.js)
 
