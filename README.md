@@ -10,7 +10,7 @@ Download manager hierarchy per user
 
 [download-manager-hierarchy.js](bamboohr/download-manager-hierarchy.js)
 
-
+![Screenshot for Download Manager Report](docs/download-manager-hierarchy.js.png)
 ----
 
 
@@ -30,7 +30,7 @@ Add user id on the search table of users
 
 [user-id-on-users-search.js](docebo/user-id-on-users-search.js)
 
-
+![Screenshot for UserId on User search docebo](docs/user-id-on-users-search.js.png)
 ----
 
 
@@ -50,7 +50,7 @@ Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-
 
 [copy-rise-schema.js](rise/copy-rise-schema.js)
 
-
+![Screenshot for Get rise-schema.json content](docs/copy-rise-schema.js.png)
 ----
 
 
@@ -60,7 +60,7 @@ Insert wistia transcript at caret
 
 [insert-wistia-transcript.js](rise/insert-wistia-transcript.js)
 
-
+![Screenshot for Rise insert wistia transcript](docs/insert-wistia-transcript.js.png)
 ----
 
 
