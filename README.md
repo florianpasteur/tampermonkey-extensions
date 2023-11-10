@@ -14,6 +14,16 @@ Download manager hierarchy per user
 ----
 
 
+# Workout extra data // version 0.2 
+
+Adds more data to the workout preview in campus coach, such as pace, distance at the beginning of block
+
+[workout-extra-data.js](campus-coach/workout-extra-data.js)
+
+
+----
+
+
 # Decathlon country links // version 0.5 
 
 Create a link to jump between dutch and french website of decathlon on the same product
