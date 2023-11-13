@@ -86,7 +86,7 @@ async function updateDocumentation() {
 
     function getNewDocumentationSection(allMetadata) {
         return allMetadata.map(metadata => `
-# ${metadata['@name']} // version ${metadata['@version']} 
+## ${metadata['@name']} // version ${metadata['@version']} 
 
 ${metadata['@description']}
 

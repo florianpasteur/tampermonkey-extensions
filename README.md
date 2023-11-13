@@ -2,9 +2,46 @@
 
 Bunch of extensions for Tampermonkey
 
+# Installation
+
+- Install Tampermonkey extension:
+- https://www.tampermonkey.net/index.php?locale=en
+
+Once the extension is installed to add a script:
+
+- Browse this repository and select the script you'd like to install. (Refer to this documentation to find the corresponding script you need)
+- On the script page click on **Raw**
+
+
+![install-github-script.png](docs/install-github-script.png)
+
+- Copy the URL in your clipboard
+
+![install-github-script-raw.png](docs/install-github-script-raw.png)
+
+- Click on the extension icon of the browser
+- Select **Dashboard**
+
+![install-extension-utilities.png](docs/install-extension-popup.png)
+
+- Go to the **Utilities tab**
+- Paste the URl in the **Import from URL** field
+- Click **Install**
+
+![install-extension-import-from-url.png](docs/install-extension-import-from-url.png)
+
+On the confirmation screen
+- Click **Install** (or Re-Install, Update)
+
+![install-extension-install-confirm.png](docs/install-extension-install-confirm.png)
+
+# Scripts
+
+Below is the list of available scripts in this repository:
+
 <!-- start-living-doc -->
 
-# Download Manager Report // version 0.31 
+## Download Manager Report // version 0.31 
 
 Download manager hierarchy per user
 
@@ -14,7 +51,7 @@ Download manager hierarchy per user
 ----
 
 
-# Workout extra data // version 0.2 
+## Workout extra data // version 0.2 
 
 Adds more data to the workout preview in campus coach, such as pace, distance at the beginning of block
 
@@ -24,7 +61,7 @@ Adds more data to the workout preview in campus coach, such as pace, distance at
 ----
 
 
-# Decathlon country links // version 0.5 
+## Decathlon country links // version 0.5 
 
 Create a link to jump between dutch and french website of decathlon on the same product
 
@@ -34,7 +71,7 @@ Create a link to jump between dutch and french website of decathlon on the same 
 ----
 
 
-# UserId on User search docebo // version 0.5 
+## UserId on User search docebo // version 0.5 
 
 Add user id on the search table of users
 
@@ -44,7 +81,7 @@ Add user id on the search table of users
 ----
 
 
-# Rise Content Downloader // version 0.6 
+## Rise Content Downloader // version 0.6 
 
 Download rise course content as markdown files
 
@@ -54,7 +91,7 @@ Download rise course content as markdown files
 ----
 
 
-# Get rise-schema.json content // version 0.3 
+## Get rise-schema.json content // version 0.3 
 
 Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-import
 
@@ -64,7 +101,7 @@ Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-
 ----
 
 
-# Rise insert wistia transcript // version 0.10 
+## Rise insert wistia transcript // version 0.10 
 
 Insert wistia transcript at caret
 
@@ -74,7 +111,7 @@ Insert wistia transcript at caret
 ----
 
 
-# Edit page // version 0.7 
+## Edit page // version 0.7 
 
 Make entire page editable, useful to change data before taking screenshot
 
@@ -84,7 +121,7 @@ Make entire page editable, useful to change data before taking screenshot
 ----
 
 
-# Functions utils // version 0.6 
+## Functions utils // version 0.6 
 
 A collection of utils function to be used in the terminal or in a JS script
 
@@ -94,7 +131,7 @@ A collection of utils function to be used in the terminal or in a JS script
 ----
 
 
-# Zwift Fan Activity watcher // version 0.3 
+## Zwift Fan Activity watcher // version 0.3 
 
 undefined
 
