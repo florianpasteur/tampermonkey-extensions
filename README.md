@@ -1,37 +1,34 @@
 # Tampermonkey Extensions
 
-Bunch of extensions for Tampermonkey
+A collection of scripts for Tampermonkey.
 
 # Installation
 
-- Install Tampermonkey extension:
-- https://www.tampermonkey.net/index.php?locale=en
+- Install the Tampermonkey extension from [this link](https://www.tampermonkey.net/index.php?locale=en).
 
-Once the extension is installed to add a script:
+Once the extension is installed, follow these steps to add a script:
 
-- Browse this repository and select the script you'd like to install. (Refer to this documentation to find the corresponding script you need)
-- On the script page click on **Raw**
-
+- Browse this repository and select the script you'd like to install (refer to this documentation to find the corresponding script you need).
+- On the script page, click on **Raw**.
 
 ![install-github-script.png](docs/install-github-script.png)
 
-- Copy the URL in your clipboard
+- Copy the URL to your clipboard.
 
 ![install-github-script-raw.png](docs/install-github-script-raw.png)
 
-- Click on the extension icon of the browser
-- Select **Dashboard**
+- Click on the extension icon in the browser.
+- Select **Dashboard**.
 
 ![install-extension-utilities.png](docs/install-extension-popup.png)
 
-- Go to the **Utilities tab**
-- Paste the URl in the **Import from URL** field
-- Click **Install**
+- Go to the **Utilities tab**.
+- Paste the URL into the **Import from URL** field.
+- Click **Install**.
 
 ![install-extension-import-from-url.png](docs/install-extension-import-from-url.png)
 
-On the confirmation screen
-- Click **Install** (or Re-Install, Update)
+On the confirmation screen, click **Install** (or Re-Install, Update).
 
 ![install-extension-install-confirm.png](docs/install-extension-install-confirm.png)
 
@@ -141,4 +138,3 @@ undefined
 ----
 
 <!-- end-living-doc -->
-
