@@ -128,6 +128,16 @@ A collection of utils function to be used in the terminal or in a JS script
 ----
 
 
+## Insert html // version 0.2 
+
+If content is editable, pop a textarea field and insert html at the caret.
+
+[insert-html.js](utils/insert-html.js)
+
+
+----
+
+
 ## Zwift Fan Activity watcher // version 0.3 
 
 undefined
