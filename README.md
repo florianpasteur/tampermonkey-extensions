@@ -108,7 +108,7 @@ Insert wistia transcript at caret
 ----
 
 
-## Edit page // version 0.7 
+## Edit page // version 0.8 
 
 Make entire page editable, useful to change data before taking screenshot
 
@@ -118,11 +118,21 @@ Make entire page editable, useful to change data before taking screenshot
 ----
 
 
-## Functions utils // version 0.6 
+## Functions utils // version 0.7 
 
 A collection of utils function to be used in the terminal or in a JS script
 
 [functions.js](utils/functions.js)
+
+
+----
+
+
+## Insert code blocks // version 0.2 
+
+If content is editable, insert styled code block
+
+[insert-code-as-html.js](utils/insert-code-as-html.js)
 
 
 ----

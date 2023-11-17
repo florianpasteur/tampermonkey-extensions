@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Functions utils
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.6
+// @version      0.7
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  A collection of utils function to be used in the terminal or in a JS script
 // @author       Florian Pasteur
 // @match        *
+// @match        *://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=js.org
 // @grant        none
 // ==/UserScript==
