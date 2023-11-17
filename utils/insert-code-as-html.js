@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Insert code blocks
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  If content is editable, insert styled code block
 // @author       Florian Pasteur
@@ -74,29 +74,6 @@ function inlineStyles(e) {
     }
 }
 function bashHljs(hljs) {
-    const VAR = {};
-    const BRACED_VAR = {
-        begin: /\$\{/,
-        end:/\}/,
-        contains: [
-            "self",
-            {
-                begin: /:-/,
-                contains: [ VAR ]
-            } // default values
-        ]
-    };
-    Object.assign(VAR,{
-        className: 'variable',
-        variants: [
-            {begin: regex.concat(/\$[\w\d#@][\w\d_]*/,
-                    // negative look-ahead tries to avoid matching patterns that are not
-                    // Perl at all like $ident$, @ident@, etc.
-                    `(?![\\w\\d])(?![$])`) },
-            BRACED_VAR
-        ]
-    });
-
     const SUBST = {
         className: 'subst',
         begin: /\$\(/, end: /\)/,
@@ -119,7 +96,6 @@ function bashHljs(hljs) {
         begin: /"/, end: /"/,
         contains: [
             hljs.BACKSLASH_ESCAPE,
-            VAR,
             SUBST
         ]
     };
@@ -139,7 +115,6 @@ function bashHljs(hljs) {
         contains: [
             { begin: /\d+#[0-9a-f]+/, className: "number" },
             hljs.NUMBER_MODE,
-            VAR
         ]
     };
     const SH_LIKE_SHELLS = [
@@ -241,7 +216,6 @@ function bashHljs(hljs) {
             QUOTE_STRING,
             ESCAPED_QUOTE,
             APOS_STRING,
-            VAR,
             LONG_OPTIONS,
             LONG_OPTIONS_WITH_PARAM,
             SHORT_OPTIONS
@@ -286,7 +260,7 @@ function getHighlightedCode(code, language) {
     const highlightedCode = hljs.highlight(code, {language});
 
     const main = document.createElement('div');
-    main.innerHTML = language === 'bash' ? commandTemplate(code) : codeTemplate(code);
+    main.innerHTML = language === 'bash' ? commandTemplate(highlightedCode.value) : codeTemplate(highlightedCode.value);
     [main, ...Array.from(main.querySelectorAll('*'))].forEach(e => {
         inlineStyles(e);
     })

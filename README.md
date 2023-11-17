@@ -128,7 +128,7 @@ A collection of utils function to be used in the terminal or in a JS script
 ----
 
 
-## Insert code blocks // version 0.2 
+## Insert code blocks // version 0.3 
 
 If content is editable, insert styled code block
 
