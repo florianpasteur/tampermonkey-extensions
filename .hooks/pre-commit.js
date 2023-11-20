@@ -4,6 +4,11 @@ const path = require('path');
 const os = require('os');
 const exec = require('child_process').exec;
 
+/*
+cat ../.git/hooks/pre-commit
+git diff-index --cached --name-only HEAD | xargs node .hooks/pre-commit.js | xargs git add
+ */
+
 main();
 
 async function main() {
