@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name         Rise Content Downloader
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.7
+// @version      0.14
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
-// @description  Download rise course content as markdown files
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/copy-lesson-content.js
+// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/copy-lesson-content.js
+// @description  [WIP] Download rise course content as markdown files
 // @author       Florian Pasteur
 // @match        https://*.articulate.com/preview/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=articulate.com

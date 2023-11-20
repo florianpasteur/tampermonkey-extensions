@@ -4,6 +4,13 @@ const path = require('path');
 const os = require('os');
 const exec = require('child_process').exec;
 
+main();
+
+async function main() {
+    await bumpVersionOfStagedFiles();
+    await updateDocumentation();
+    await updateDownloadAndUpdateUrlsLinks();
+}
 async function updateDocumentation() {
 
     const allFiles = await getAllFilesRecursively('.');
@@ -99,13 +106,8 @@ ${insertScreenshotIfExists(metadata)}
 
 }
 
-(async function () {
-    await bumpVersionOfCommitedFiles();
-    await updateDocumentation();
-})();
-
-async function bumpVersionOfCommitedFiles() {
-    for (let file of process.argv) {
+async function bumpVersionOfStagedFiles() {
+    for (let file of process.argv.slice(2)) {
         if (fsSync.existsSync(file)) {
             let fileContent = (await fs.readFile(file)).toString();
 
@@ -126,6 +128,47 @@ async function bumpVersionOfCommitedFiles() {
                 const newVersionLine = currentVersionLine.replace(currentVersion, newVersion);
 
                 const updatedVersion = fileContent.replace(currentVersionLine, newVersionLine);
+
+                await fs.writeFile(file, updatedVersion)
+
+                // Not a debug line, used to stage after in the hook
+                console.log(file)
+            }
+        }
+    }
+}
+
+async function updateDownloadAndUpdateUrlsLinks() {
+    for (let file of process.argv.slice(2)) {
+        if (fsSync.existsSync(file)) {
+            console.log(file);
+            let fileContent = (await fs.readFile(file)).toString();
+
+            if (!fileContent.startsWith("// ==UserScript==")) {
+                // ignore non-tampermonkey-script files
+                continue;
+            }
+
+            const updateUrl = new RegExp("// @updateURL .*").exec(fileContent);
+            const downloadUrl = new RegExp("// @downloadURL .*").exec(fileContent);
+
+            if (updateUrl && updateUrl[0]) {
+                const existingUpdateUrl = updateUrl[0];
+                const newUpdateUrl = `// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/${file}`;
+
+                const updatedVersion = fileContent.replace(existingUpdateUrl, newUpdateUrl);
+
+                await fs.writeFile(file, updatedVersion)
+
+                // Not a debug line, used to stage after in the hook
+                console.log(file)
+            }
+
+            if (downloadUrl && downloadUrl[0]) {
+                const existingDownloadUrl = downloadUrl[0];
+                const newDownloadUrl = `// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/${file}`;
+
+                const updatedVersion = fileContent.replace(existingDownloadUrl, newDownloadUrl);
 
                 await fs.writeFile(file, updatedVersion)
 
