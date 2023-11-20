@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         Insert code blocks
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.3
+// @version      0.4
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/insert-code-as-html.js
+// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/insert-code-as-html.js
 // @description  If content is editable, insert styled code block
 // @author       Florian Pasteur
 // @match        *

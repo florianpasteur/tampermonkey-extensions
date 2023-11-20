@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         Insert html
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/insert-html.js
+// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/insert-html.js
 // @description  If content is editable, pop a textarea field and insert html at the caret.
 // @author       Florian Pasteur
 // @match        *

@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         UserId on User search docebo
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.5
+// @version      0.6
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/docebo/user-id-on-users-search.js
+// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/docebo/user-id-on-users-search.js
 // @description  Add user id on the search table of users
 // @author       Florian Pasteur
 // @match        https://learn.backbase.com/*

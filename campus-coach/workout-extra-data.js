@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         Workout extra data
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/campus-coach/workout-extra-data.js
+// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/campus-coach/workout-extra-data.js
 // @description  Adds more data to the workout preview in campus coach, such as pace, distance at the beginning of block
 // @author       Florian Pasteur
 // @match        https://app.campus.coach/*

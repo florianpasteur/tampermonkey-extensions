@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         Zwift Fan Activity watcher
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.3
-// @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issuesTurn on and off Zwift fan when Zwift activity detected
+// @version      0.4
+// @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/zwift/activity-watcher.js
+// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/zwift/activity-watcher.js
 // @author       Florian Pasteur
 // @match        https://www.zwiftgps.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=zwift.com

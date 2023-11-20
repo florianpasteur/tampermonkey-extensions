@@ -38,7 +38,7 @@ Below is the list of available scripts in this repository:
 
 <!-- start-living-doc -->
 
-## Download Manager Report // version 0.31 
+## Download Manager Report // version 0.32 
 
 Download manager hierarchy per user
 
@@ -48,7 +48,7 @@ Download manager hierarchy per user
 ----
 
 
-## Workout extra data // version 0.2 
+## Workout extra data // version 0.3 
 
 Adds more data to the workout preview in campus coach, such as pace, distance at the beginning of block
 
@@ -58,7 +58,7 @@ Adds more data to the workout preview in campus coach, such as pace, distance at
 ----
 
 
-## Decathlon country links // version 0.5 
+## Decathlon country links // version 0.6 
 
 Create a link to jump between dutch and french website of decathlon on the same product
 
@@ -68,7 +68,7 @@ Create a link to jump between dutch and french website of decathlon on the same 
 ----
 
 
-## UserId on User search docebo // version 0.5 
+## UserId on User search docebo // version 0.6 
 
 Add user id on the search table of users
 
@@ -78,7 +78,7 @@ Add user id on the search table of users
 ----
 
 
-## Rise Content Downloader // version 0.15 
+## Rise Content Downloader // version 0.16 
 
 [WIP] Download rise course content as markdown files
 
@@ -88,7 +88,7 @@ Add user id on the search table of users
 ----
 
 
-## Get rise-schema.json content // version 0.4 
+## Get rise-schema.json content // version 0.5 
 
 Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-import
 
@@ -98,7 +98,7 @@ Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-
 ----
 
 
-## Rise insert wistia transcript // version 0.10 
+## Rise insert wistia transcript // version 0.11 
 
 Insert wistia transcript at caret
 
@@ -108,7 +108,7 @@ Insert wistia transcript at caret
 ----
 
 
-## Edit page // version 0.8 
+## Edit page // version 0.9 
 
 Make entire page editable, useful to change data before taking screenshot
 
@@ -118,7 +118,7 @@ Make entire page editable, useful to change data before taking screenshot
 ----
 
 
-## Functions utils // version 0.7 
+## Functions utils // version 0.8 
 
 A collection of utils function to be used in the terminal or in a JS script
 
@@ -128,7 +128,7 @@ A collection of utils function to be used in the terminal or in a JS script
 ----
 
 
-## Insert code blocks // version 0.3 
+## Insert code blocks // version 0.4 
 
 If content is editable, insert styled code block
 
@@ -138,7 +138,7 @@ If content is editable, insert styled code block
 ----
 
 
-## Insert html // version 0.2 
+## Insert html // version 0.3 
 
 If content is editable, pop a textarea field and insert html at the caret.
 
@@ -148,7 +148,7 @@ If content is editable, pop a textarea field and insert html at the caret.
 ----
 
 
-## Zwift Fan Activity watcher // version 0.3 
+## Zwift Fan Activity watcher // version 0.4 
 
 undefined
 

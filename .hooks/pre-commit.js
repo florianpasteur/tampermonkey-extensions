@@ -149,16 +149,16 @@ async function updateDownloadAndUpdateUrlsLinks() {
                 continue;
             }
 
-            const updateUrl = new RegExp("// @updateURL .*").exec(fileContent);
-            const downloadUrl = new RegExp("// @downloadURL .*").exec(fileContent);
+            const updateUrl = new RegExp("// @updateURL.*").exec(fileContent);
+            const downloadUrl = new RegExp("// @downloadURL.*").exec(fileContent);
 
             if (updateUrl && updateUrl[0]) {
                 const existingUpdateUrl = updateUrl[0];
                 const newUpdateUrl = `// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/${file}`;
 
-                const updatedVersion = fileContent.replace(existingUpdateUrl, newUpdateUrl);
+                fileContent = fileContent.replace(existingUpdateUrl, newUpdateUrl);
 
-                await fs.writeFile(file, updatedVersion)
+                await fs.writeFile(file, fileContent)
 
                 // Not a debug line, used to stage after in the hook
                 console.log(file)
@@ -168,9 +168,9 @@ async function updateDownloadAndUpdateUrlsLinks() {
                 const existingDownloadUrl = downloadUrl[0];
                 const newDownloadUrl = `// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/${file}`;
 
-                const updatedVersion = fileContent.replace(existingDownloadUrl, newDownloadUrl);
+                fileContent = fileContent.replace(existingDownloadUrl, newDownloadUrl);
 
-                await fs.writeFile(file, updatedVersion)
+                await fs.writeFile(file, fileContent)
 
                 // Not a debug line, used to stage after in the hook
                 console.log(file)
