@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise Content Downloader
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.6
+// @version      0.7
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @description  Download rise course content as markdown files
 // @author       Florian Pasteur
@@ -12,7 +12,7 @@
 // @require      https://cdn.jsdelivr.net/npm/marked/marked.min.js
 // @require      https://unpkg.com/turndown/dist/turndown.js
 // @require      https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js
-// @grant none
+// @grant        GM_setClipboard
 // ==/UserScript==
 
 const turndownService = new TurndownService();
@@ -20,25 +20,24 @@ const turndownService = new TurndownService();
 (async function () {
     'use strict';
 
-    const types = new Set();
-
     const courseId = window.location.href.replace(window.location.hash, '').split('/').pop();
     const courseData = await getCourseData(courseId);
 
-    console.log(courseData);
+    let markdown = ''
 
-    for (let lesson of courseData.course.lessons.slice(0, 1)) {
+    for (let lesson of courseData.course.lessons) {
+        markdown += `<!-- start: ${lesson.title} -->\n`
         for (let item of lesson.items) {
-            types.add(
-                `${item.items.length}`,
-            );
-
+            markdown += itemToMarkdown(item) + '\n'
             // console.log(getItemKey(item), itemToMarkdown(item));
-            console.log(itemToMarkdown(item));
         }
+        markdown += `<!-- end: ${lesson.title} -->\n`
     }
 
-    // console.log(Array.from(types));
+
+
+    GM_setClipboard(markdown);
+
 
 
     async function getCourseData(lessonId) {
@@ -48,8 +47,11 @@ const turndownService = new TurndownService();
 })();
 
 function itemToMarkdown(item) {
+    if (!item.items) {
+        return JSON.stringify(item)
+    }
     if (item.items.length > 1) {
-        console.log(item.items);
+        console.error(item.items);
         // throw new Error('Item has length > 1')
     }
     const content = item.items[0];

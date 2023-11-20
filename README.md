@@ -78,7 +78,7 @@ Add user id on the search table of users
 ----
 
 
-## Rise Content Downloader // version 0.6 
+## Rise Content Downloader // version 0.7 
 
 Download rise course content as markdown files
 
