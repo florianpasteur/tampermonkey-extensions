@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Rise Content Downloader
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.14
+// @version      0.15
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
-// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/copy-lesson-content.js
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/somethign_wrong
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/copy-lesson-content.js
 // @description  [WIP] Download rise course content as markdown files
 // @author       Florian Pasteur
