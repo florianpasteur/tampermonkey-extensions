@@ -88,7 +88,7 @@ Add user id on the search table of users
 ----
 
 
-## Get rise-schema.json content // version 0.3 
+## Get rise-schema.json content // version 0.4 
 
 Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-import
 
