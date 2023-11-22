@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise Content Downloader
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.17
+// @version      0.18
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/copy-lesson-content.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/copy-lesson-content.js
@@ -70,7 +70,7 @@ function itemToMarkdown(item) {
         case "interactive interactive accordion":
             return `<details>\n<summary>${content.title}</summary>\n\n${content.description}</details>`;
         case "multimedia multimedia attachment":
-            return `[${content.media.attachment.originalUrl}](${content.media.attachment.key})`;
+            return `[${content.media.attachment.originalUrl}](${content.media.attachment.key} "download")`;
         case "multimedia multimedia embed":
                 return `[video](${readWistiaUrl(content.media.embed.src)} "video"]`;
         case "text impact a":

@@ -78,7 +78,7 @@ Add user id on the search table of users
 ----
 
 
-## Rise Content Downloader // version 0.17 
+## Rise Content Downloader // version 0.18 
 
 [WIP] Download rise course content as markdown files
 
@@ -105,6 +105,16 @@ Insert wistia transcript at caret
 [insert-wistia-transcript.js](rise/insert-wistia-transcript.js)
 
 ![Screenshot for Rise insert wistia transcript](docs/insert-wistia-transcript.js.png)
+----
+
+
+## Rise Toolbox // version 0.1 
+
+Set of tools and shortcuts for Rise
+
+[rise-toolbox.js](rise/rise-toolbox.js)
+
+
 ----
 
 
@@ -143,6 +153,16 @@ If content is editable, insert styled code block
 If content is editable, pop a textarea field and insert html at the caret.
 
 [insert-html.js](utils/insert-html.js)
+
+
+----
+
+
+## Insert markdown // version 0.2 
+
+Insert markdown as html at the caret in the page.
+
+[insert-markdown.js](utils/insert-markdown.js)
 
 
 ----
