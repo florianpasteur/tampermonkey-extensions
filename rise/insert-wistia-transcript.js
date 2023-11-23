@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rise insert wistia transcript
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.11
+// @version      0.12
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/insert-wistia-transcript.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/rise/insert-wistia-transcript.js
@@ -52,7 +52,7 @@
         }
     }
     async function downloadTranscript(link) {
-        const videoId = link.split('/').pop();
+        const videoId = new URL(link).pathname.split('/').pop();
         try {
             const videoMetadata = await axios.get(`https://fast.wistia.com/embed/medias/${videoId}.json`);
             const captions = videoMetadata.data?.media?.captions?.[0]?.text;
@@ -74,15 +74,15 @@
                         });
                     });
 
-                    const captionsWithChapters = [...chaptersAsCaptions, ...captionsLines].sort((a, b) => a.start - b.start).map(caption => caption.text.join(" ")).join(" ").split('. ').join('.\n\n<br />');
+                    const captionsWithChapters = [...chaptersAsCaptions, ...captionsLines].sort((a, b) => a.start - b.start).map(caption => caption.text.join(" ")).join(" ")
 
                     if (captionsWithChapters) {
-                        return captionsWithChapters;
+                        return formatCaptions(captionsWithChapters);
                     }
                 }
 
             }
-            return captions || '';
+            return formatCaptions(captions) || '';
         } catch (e) {
             console.error("Error while getting transcript")
             console.error(e)
@@ -90,7 +90,15 @@
         return '';
     }
 
-    let wistiaUrl = prompt("Please enter wistia URL", "https://company.wistia.com/medias/....");
+    function formatCaptions(captions) {
+        return captions.split('. ').join('.\n\n<br />');
+    }
+
+    function findWistiaReferenceInPage() {
+        return Array.from(document.querySelectorAll('iframe')).map(e => e.src).find(e => e?.indexOf('wistia.') >= 0)
+    }
+
+    let wistiaUrl = prompt("Please enter wistia URL", findWistiaReferenceInPage() || "https://company.wistia.com/medias/....");
 
     if (wistiaUrl != null) {
         const transcript = await downloadTranscript(wistiaUrl);

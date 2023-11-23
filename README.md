@@ -98,7 +98,7 @@ Copy list of lessons to be paste on the rise-schema.json for a markdown-to-rise-
 ----
 
 
-## Rise insert wistia transcript // version 0.11 
+## Rise insert wistia transcript // version 0.12 
 
 Insert wistia transcript at caret
 
