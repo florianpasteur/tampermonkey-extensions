@@ -78,6 +78,16 @@ Add user id on the search table of users
 ----
 
 
+## Declare woon-week ritten // version 0.2 
+
+Declare for the entire week (Mon to Fri) the home to work trip in one click
+
+[declare-woon-werk-ritten.js](reisbalans/declare-woon-werk-ritten.js)
+
+![Screenshot for Declare woon-week ritten](docs/declare-woon-werk-ritten.js.png)
+----
+
+
 ## Rise Content Downloader // version 0.18 
 
 [WIP] Download rise course content as markdown files
