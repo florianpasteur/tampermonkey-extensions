@@ -110,6 +110,34 @@
         return e;
     }
 
+    function style() {
+        const styleElement = document.createElement('style');
+        document.head.append(styleElement)
+        styleElement.innerHTML = `
+                .draggable {
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            cursor: move;
+
+            display: flex;
+            flex-direction: column;
+            margin: 0.5em 0;
+
+        }
+
+
+        .draggable iframe {
+            resize: both;
+            overflow: auto;
+
+            width: 500px;
+            /*height: 500px;*/
+
+            border-radius: 5%;
+        }`
+    }
+
 
 
 </script>

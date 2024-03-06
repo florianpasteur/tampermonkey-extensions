@@ -78,6 +78,16 @@ Add user id on the search table of users
 ----
 
 
+## Jira Timer and Wheel // version 0.2 
+
+Insert Wheel of names or Timer to Jira page to track daily limits
+
+[jira-timer-and-wheel.js](jira-timer-and-wheel/jira-timer-and-wheel.js)
+
+
+----
+
+
 ## Declare woon-week ritten // version 0.2 
 
 Declare for the entire week (Mon to Fri) the home to work trip in one click

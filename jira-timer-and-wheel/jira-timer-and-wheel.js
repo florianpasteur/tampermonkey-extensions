@@ -1,0 +1,132 @@
+// ==UserScript==
+// @name         Jira Timer and Wheel
+// @namespace    https://github.com/florianpasteur/tampermonkey-extensions
+// @version      0.2
+// @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
+// @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/jira-timer-and-wheel/jira-timer-and-wheel.js
+// @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/jira-timer-and-wheel/jira-timer-and-wheel.js
+// @description  Insert Wheel of names or Timer to Jira page to track daily limits
+// @author       Florian Pasteur
+// @match        https://*.atlassian.net/*
+// @run-at       context-menu
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=www.atlassian.com
+// @grant           GM_registerMenuCommand
+// ==/UserScript==
+
+
+(function() {
+    'use strict';
+
+    function wheelOfNames() {
+        makeDraggable(macWindow("https://pickerwheel.com/?id=AQ4Dk", '500px', 'yes'))
+    }
+
+    function timer() {
+        makeDraggable(macWindow("https://www.bigtimer.net/?minutes=3&repeat=false", '300px', 'no'))
+    }
+
+    GM_registerMenuCommand("wheel of names", wheelOfNames);
+    GM_registerMenuCommand("timer", timer);
+
+
+    function makeDraggable(draggableElement) {
+        draggableElement.querySelector('.close').addEventListener('click', () => {
+            draggableElement.parentElement.removeChild(draggableElement);
+        })
+        draggableElement.querySelector('.minimize').addEventListener('click', () => {
+            draggableElement.style.height = '0px'
+        })
+        draggableElement.querySelector('.maximize').addEventListener('click', () => {
+            draggableElement.style.height = '100vh'
+        })
+
+        // Initialize variables to keep track of dragging state
+        var dragging = false;
+        var offsetX, offsetY;
+
+        // Function to handle mouse down event
+        function handleMouseDown(event) {
+            dragging = true;
+
+            // Calculate the offset of mouse pointer relative to the draggable element
+            offsetX = event.clientX - draggableElement.getBoundingClientRect().left;
+            offsetY = event.clientY - draggableElement.getBoundingClientRect().top;
+
+            // Add event listeners for mouse move and mouse up events
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+        }
+
+        // Function to handle mouse move event
+        function handleMouseMove(event) {
+            if (dragging) {
+                // Calculate new position of the draggable element based on mouse position and offset
+                var x = event.clientX - offsetX;
+                var y = event.clientY - offsetY;
+
+                // Update position of the draggable element
+                draggableElement.style.left = x + 'px';
+                draggableElement.style.top = y + 'px';
+            }
+        }
+
+        // Function to handle mouse up event
+        function handleMouseUp() {
+            dragging = false;
+
+            // Remove event listeners for mouse move and mouse up events
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        }
+
+        // Add event listener for mouse down event on the draggable element
+        draggableElement.addEventListener('mousedown', handleMouseDown);
+    }
+
+    function macWindow(src, height, scrollable) {
+        const e = document.createElement('div');
+        e.classList.add('draggable')
+
+        document.body.append(e);
+        e.innerHTML = `
+    <div style="height: 2em; border: 1px solid rgb(238, 238, 238); background: rgb(250, 250, 250); display: flex; align-items: center; padding-left: 0.5em; border-top-left-radius: 5px; border-top-right-radius: 5px; user-select: none;">
+        <span class="close" style="width: 1em; height: 1em; background: #f87171; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+        <span class="minimize"
+            style="width: 1em; height: 1em; background: #facc15; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+        <span  class="maximize"
+            style="width: 1em; height: 1em; background: #4ade80; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+    </div>
+    <div style="background: #fcfcfd; padding: 1.5em 0.5em; line-height: 1em; display: flex; align-items: flex-start; border-left: 1px solid rgb(238, 238, 238); border-right: 1px solid rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none">
+        <iframe scrolling="${scrollable}"  style="height: ${height}" src="${src}" frameborder="0"></iframe>
+    </div>`;
+        return e;
+    }
+
+    function style() {
+        const styleElement = document.createElement('style');
+        document.head.append(styleElement)
+        styleElement.innerHTML = `
+                .draggable {
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            cursor: move;
+
+            display: flex;
+            flex-direction: column;
+            margin: 0.5em 0;
+
+        }
+
+
+        .draggable iframe {
+            resize: both;
+            overflow: auto;
+
+            width: 500px;
+            /*height: 500px;*/
+
+            border-radius: 5%;
+        }`
+    }
+})();
