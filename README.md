@@ -78,7 +78,7 @@ Add user id on the search table of users
 ----
 
 
-## Jira Timer and Wheel // version 0.3 
+## Jira Timer and Wheel // version 0.4 
 
 Insert Wheel of names or Timer to Jira page to track daily limits
 
