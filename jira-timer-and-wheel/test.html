@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Element</title>
+    <style>
+        #draggable {
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            cursor: move;
+
+        }
+
+
+        #draggable iframe {
+            resize: both;
+            overflow: auto;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="draggable" translate="no" style="display: flex; flex-direction: column;  user-select: all; cursor: pointer; margin: 0.5em 0;">
+    <div style="height: 2em; border: 1px solid rgb(238, 238, 238); background: rgb(250, 250, 250); display: flex; align-items: center; padding-left: 0.5em; border-top-left-radius: 5px; border-top-right-radius: 5px; user-select: none;">
+        <span class="close" style="width: 1em; height: 1em; background: #f87171; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+        <span class="minimize"
+            style="width: 1em; height: 1em; background: #facc15; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+        <span  class="maximize"
+            style="width: 1em; height: 1em; background: #4ade80; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+    </div>
+    <div style="background: #fcfcfd; padding: 1.5em 0.5em; line-height: 1em; display: flex; align-items: flex-start; border-left: 1px solid rgb(238, 238, 238); border-right: 1px solid rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none">
+        <iframe src="https://pickerwheel.com/?id=AQ4Dk" frameborder="0"></iframe>
+    </div>
+</div>
+
+
+<div class="resizable">
+    <div >
+
+    </div>
+</div>
+
+<script>
+    // Get the draggable element
+    var draggableElement = document.getElementById('draggable');
+
+    draggableElement.querySelector('.close').addEventListener('click', () => {
+        draggableElement.parentElement.removeChild(draggableElement);
+    })
+    draggableElement.querySelector('.minimize').addEventListener('click', () => {
+        draggableElement.style.height = '0px'
+    })
+    draggableElement.querySelector('.maximize').addEventListener('click', () => {
+        draggableElement.style.height = '100vh'
+    })
+
+    // Initialize variables to keep track of dragging state
+    var dragging = false;
+    var offsetX, offsetY;
+
+    // Function to handle mouse down event
+    function handleMouseDown(event) {
+        dragging = true;
+
+        // Calculate the offset of mouse pointer relative to the draggable element
+        offsetX = event.clientX - draggableElement.getBoundingClientRect().left;
+        offsetY = event.clientY - draggableElement.getBoundingClientRect().top;
+
+        // Add event listeners for mouse move and mouse up events
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+    }
+
+    // Function to handle mouse move event
+    function handleMouseMove(event) {
+        if (dragging) {
+            // Calculate new position of the draggable element based on mouse position and offset
+            var x = event.clientX - offsetX;
+            var y = event.clientY - offsetY;
+
+            // Update position of the draggable element
+            draggableElement.style.left = x + 'px';
+            draggableElement.style.top = y + 'px';
+        }
+    }
+
+    // Function to handle mouse up event
+    function handleMouseUp() {
+        dragging = false;
+
+        // Remove event listeners for mouse move and mouse up events
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+    }
+
+    // Add event listener for mouse down event on the draggable element
+    draggableElement.addEventListener('mousedown', handleMouseDown);
+
+
+
+</script>
+
+</body>
+</html>
