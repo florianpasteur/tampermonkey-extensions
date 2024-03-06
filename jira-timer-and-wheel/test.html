@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Draggable Element</title>
     <style>
-        #draggable {
+        .draggable {
             text-align: center;
             line-height: 100px;
             position: absolute;
             cursor: move;
 
+            display: flex;
+            flex-direction: column;
+            margin: 0.5em 0;
+
         }
 
 
-        #draggable iframe {
+        .draggable iframe {
             resize: both;
             overflow: auto;
 
             width: 500px;
-            height: 500px;
+            /*height: 500px;*/
 
             border-radius: 5%;
         }
@@ -29,18 +33,10 @@
 
 
 
-
-<div class="resizable">
-    <div >
-
-    </div>
-</div>
-
 <script>
     // Get the draggable element
-    macWindow("https://pickerwheel.com/?id=AQ4Dk");
-    var draggableElement = document.getElementById('draggable');
-    makeDraggable(draggableElement)
+    makeDraggable(macWindow("https://pickerwheel.com/?id=AQ4Dk", '500px', 'yes'))
+    makeDraggable(macWindow("https://www.bigtimer.net/?minutes=3&repeat=false", '300px', 'no'))
     function makeDraggable(draggableElement) {
         draggableElement.querySelector('.close').addEventListener('click', () => {
             draggableElement.parentElement.removeChild(draggableElement);
@@ -95,11 +91,12 @@
         draggableElement.addEventListener('mousedown', handleMouseDown);
     }
 
-    function macWindow(src) {
+    function macWindow(src, height, scrollable) {
         const e = document.createElement('div');
+        e.classList.add('draggable')
 
         document.body.append(e);
-        e.outerHTML = `<div id="draggable" translate="no" style="display: flex; flex-direction: column;  user-select: all; cursor: pointer; margin: 0.5em 0;">
+        e.innerHTML = `
     <div style="height: 2em; border: 1px solid rgb(238, 238, 238); background: rgb(250, 250, 250); display: flex; align-items: center; padding-left: 0.5em; border-top-left-radius: 5px; border-top-right-radius: 5px; user-select: none;">
         <span class="close" style="width: 1em; height: 1em; background: #f87171; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
         <span class="minimize"
@@ -108,10 +105,9 @@
             style="width: 1em; height: 1em; background: #4ade80; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
     </div>
     <div style="background: #fcfcfd; padding: 1.5em 0.5em; line-height: 1em; display: flex; align-items: flex-start; border-left: 1px solid rgb(238, 238, 238); border-right: 1px solid rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none">
-        <iframe src="${src}" frameborder="0"></iframe>
-    </div>
-</div>`;
-        return e.querySelector('div');
+        <iframe scrolling="${scrollable}"  style="height: ${height}" src="${src}" frameborder="0"></iframe>
+    </div>`;
+        return e;
     }
 
 
