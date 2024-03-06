@@ -1,14 +1,13 @@
 // ==UserScript==
 // @name         Jira Timer and Wheel
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/jira-timer-and-wheel/jira-timer-and-wheel.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/jira-timer-and-wheel/jira-timer-and-wheel.js
 // @description  Insert Wheel of names or Timer to Jira page to track daily limits
 // @author       Florian Pasteur
 // @match        https://*.atlassian.net/*
-// @run-at       context-menu
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=www.atlassian.com
 // @grant           GM_registerMenuCommand
 // ==/UserScript==
