@@ -7,8 +7,8 @@
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/docebo/user-id-on-users-search.js
 // @description  Add user id on the search table of users
 // @author       Florian Pasteur
-// @match        https://CHANGEME-TO-YOUR-LMS-URL.com/course/manage
-// @match        https://*.docebosaas.com/course/manage
+// @match        https://CHANGEME-TO-YOUR-LMS-URL.com/manage/users
+// @match        https://*.docebosaas.com/manage/users
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=docebo.com
 // @grant none
 // ==/UserScript==
