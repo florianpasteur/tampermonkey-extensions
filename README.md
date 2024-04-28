@@ -78,7 +78,7 @@ Add user id on the search table of users
 ----
 
 
-## Jira Timer and Wheel // version 0.4 
+## Jira Timer and Wheel // version 0.5 
 
 Insert Wheel of names or Timer to Jira page to track daily limits
 
@@ -133,6 +133,16 @@ Insert wistia transcript at caret
 Set of tools and shortcuts for Rise
 
 [rise-toolbox.js](rise/rise-toolbox.js)
+
+
+----
+
+
+## Download videos // version 0.2 
+
+Find and open videos from a page to new tabs
+
+[download-videos.js](utils/download-videos.js)
 
 
 ----

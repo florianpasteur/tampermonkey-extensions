@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira Timer and Wheel
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.4
+// @version      0.5
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/jira-timer-and-wheel/jira-timer-and-wheel.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/jira-timer-and-wheel/jira-timer-and-wheel.js
@@ -41,7 +41,20 @@
         element.style.width = element.clientWidth * 0.9 + 'px';
     }
 
+    function toggle(element) {
+        console.log("toggle");
+        element.data('initialHeight', element.clientHeight || element.data('initialHeight'));
+        if (element.clientHeight === 0) {
+            element.style.height = 0 + 'px';
+        } else {
+            element.style.height = element.data('initialHeight') + 'px';
+        }
+    }
+
     function makeDraggable(draggableElement) {
+        draggableElement.querySelector('.windowBar').addEventListener('dblclick', () => {
+            toggle(draggableElement.querySelector('iframe'));
+        })
         draggableElement.querySelector('.close').addEventListener('click', () => {
             draggableElement.parentElement.removeChild(draggableElement);
         })
@@ -107,12 +120,12 @@
 
         document.body.append(e);
         e.innerHTML = `
-    <div style="height: 2em; border: 1px solid rgb(238, 238, 238); background: rgb(250, 250, 250); display: flex; align-items: center; padding-left: 0.5em; border-top-left-radius: 5px; border-top-right-radius: 5px; user-select: none;">
-        <span class="close" style="width: 1em; height: 1em; background: #f87171; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+    <div class="windowBar" style="height: 2em; border: 1px solid rgb(238, 238, 238); background: rgb(250, 250, 250); display: flex; align-items: center; padding-left: 0.5em; border-top-left-radius: 5px; border-top-right-radius: 5px; user-select: none;">
+        <span class="close" style="cursor: pointer; width: 1em; height: 1em; background: #f87171; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
         <span class="minimize"
-            style="width: 1em; height: 1em; background: #facc15; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+            style="cursor: pointer; width: 1em; height: 1em; background: #facc15; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
         <span  class="maximize"
-            style="width: 1em; height: 1em; background: #4ade80; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
+            style="cursor: pointer; width: 1em; height: 1em; background: #4ade80; margin: 0.3em; border-radius: 50%; display: inline-block;">&nbsp;</span>
     </div>
     <div style="background: #fcfcfd; padding: 1.5em 0.5em; line-height: 1em; display: flex; align-items: flex-start; border-left: 1px solid rgb(238, 238, 238); border-right: 1px solid rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none">
         <iframe scrolling="${scrollable}"  height="${height}" width="${width}" src="${src}" frameborder="0" ></iframe>
