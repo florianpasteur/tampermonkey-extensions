@@ -138,7 +138,7 @@ Set of tools and shortcuts for Rise
 ----
 
 
-## Download videos // version 0.2 
+## Download videos // version 0.3 
 
 Find and open videos from a page to new tabs
 
