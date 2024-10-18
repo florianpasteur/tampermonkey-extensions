@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Decathlon country links
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.6
+// @version      0.7
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/decathlon-country-links/decathlon-country-links.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/decathlon-country-links/decathlon-country-links.js
@@ -26,10 +26,11 @@
         return a
     }
 
-    // Your code here...
-
-    const [model] = /\d+/.exec(document.querySelector('.current-selected-model').innerText)
+    const [modelV1] = /\d+/.exec(document.querySelector('.current-selected-model').innerText)
+    const [modelV2] = /\d+/.exec(document.querySelector('.product-info__product-id').innerText)
     const title = document.querySelector('h1')
+
+    const model = modelV1 || modelV2;
 
     console.log("Model:", model);
 

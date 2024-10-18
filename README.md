@@ -58,7 +58,7 @@ Adds more data to the workout preview in campus coach, such as pace, distance at
 ----
 
 
-## Decathlon country links // version 0.6 
+## Decathlon country links // version 0.7 
 
 Create a link to jump between dutch and french website of decathlon on the same product
 
@@ -75,6 +75,16 @@ Add user id on the search table of users
 [user-id-on-users-search.js](docebo/user-id-on-users-search.js)
 
 ![Screenshot for UserId on User search docebo](docs/user-id-on-users-search.js.png)
+----
+
+
+## Download workout // version 0.1 
+
+Adds an action icon to download the workout in garmin connect
+
+[download-workout.js](garmin-connect/download-workout.js)
+
+
 ----
 
 
