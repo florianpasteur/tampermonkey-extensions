@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download videos
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.3
+// @version      0.4
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/download-videos.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/download-videos.js
@@ -13,8 +13,6 @@
 // ==/UserScript==
 
 (function () {
-
-    debugger
 
     setInterval(() => {
         for (let contextmenu of window.getEventListeners(document).contextmenu) {

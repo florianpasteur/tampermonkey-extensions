@@ -158,7 +158,7 @@ Download an HTML content as markdown
 ----
 
 
-## Download videos // version 0.3 
+## Download videos // version 0.4 
 
 Find and open videos from a page to new tabs
 
