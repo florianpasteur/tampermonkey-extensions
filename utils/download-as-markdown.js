@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Download as markdown
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/download-as-markdown.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/utils/download-as-markdown.js
 // @description  Download an HTML content as markdown
 // @author       Florian Pasteur
 // @match        *
+// @match        *://*/*
 // @grant        none
 // @run-at       context-menu
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=js.org

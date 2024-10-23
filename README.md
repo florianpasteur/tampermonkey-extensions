@@ -148,7 +148,7 @@ Set of tools and shortcuts for Rise
 ----
 
 
-## Download as markdown // version 0.2 
+## Download as markdown // version 0.3 
 
 Download an HTML content as markdown
 
