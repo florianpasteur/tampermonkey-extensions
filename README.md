@@ -78,7 +78,7 @@ Add user id on the search table of users
 ----
 
 
-## Download workout // version 0.1 
+## Download workout // version 0.2 
 
 Adds an action icon to download the workout in garmin connect
 
@@ -143,6 +143,16 @@ Insert wistia transcript at caret
 Set of tools and shortcuts for Rise
 
 [rise-toolbox.js](rise/rise-toolbox.js)
+
+
+----
+
+
+## Download as markdown // version 0.1 
+
+Download an HTML content as markdown
+
+[download-as-markdown.js](utils/download-as-markdown.js)
 
 
 ----
