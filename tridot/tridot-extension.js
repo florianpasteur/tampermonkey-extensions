@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Tridot Extension
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.19
+// @version      0.20
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
-// @description  [WIP] Download rise course content as markdown files
+// @description  Tridot extension to quickly set session times and send to Garmin/Zwift
 // @author       Florian Pasteur
 // @match        https://app.tridot.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tridot.com

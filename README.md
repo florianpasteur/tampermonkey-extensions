@@ -138,9 +138,9 @@ Insert wistia transcript at caret
 ----
 
 
-## Tridot Extension // version 0.19 
+## Tridot Extension // version 0.20 
 
-[WIP] Download rise course content as markdown files
+Tridot extension to quickly set session times and send to Garmin/Zwift
 
 [tridot-extension.js](tridot/tridot-extension.js)
 
