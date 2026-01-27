@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tridot Extension
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.20
+// @version      0.21
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
@@ -135,6 +135,11 @@
             modified.push(sessionElement)
         }
 
+        const body = document.querySelector('app-single-week');
+        if (!modified.includes(body)) {
+            addButton("Update calendar", triggerGHA, body);
+            modified.push(body);
+        }
     }, 1_000)
 
     console.log("Tridot extension loaded");
@@ -194,4 +199,43 @@ function determineWorkoutType(sessionElement) {
     if (src.includes('run')) return 'run';
     if (src.includes('strength')) return 'strength';
     return 'other';
+}
+
+// Expected JSON
+// {"token":"GITHUB_PAT","owner":"github-username","repo":"repository-name","workflowId":"workflow-file.yml","ref":"branch-or-tag-name"}
+function readGHAConfig() {
+    const GHAConfigStr = localStorage.getItem('GHAConfig') || '{}';
+    let config =  JSON.parse(GHAConfigStr);
+    for (let i = 0; i < 3; i++) {
+        if (!config.token || !config.owner || !config.repo || !config.workflowId || !config.ref) {
+            config = JSON.parse(prompt("Please enter GHA configuration as JSON "))
+        } else {
+            localStorage.setItem('GHAConfig', JSON.stringify(config));
+            return config;
+        }
+    }
+    localStorage.removeItem('GHAConfig');
+    alert('GHA configuration incomplete, cannot proceed');
+}
+
+async function triggerGHA() {
+    const {owner, ref, repo, token, workflowId} = readGHAConfig();
+    const response = await axios.post(
+        `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflowId}/dispatches`,
+        `{"ref":"${ref}"}`,
+        {
+            headers: {
+                'Accept': 'application/vnd.github+json',
+                'Authorization': `Bearer ${token}`,
+                'X-GitHub-Api-Version': '2022-11-28',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    );
+
+    if (response.ok) {
+        alert('GHA workflow triggered successfully');
+    } else {
+        alert(`Error triggering GHA workflow: ${response.statusText} ${response.statusCode}`);
+    }
 }
