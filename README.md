@@ -144,7 +144,7 @@ Tridot extension to quickly set session times and send to Garmin/Zwift
 
 [tridot-extension.js](tridot/tridot-extension.js)
 
-
+![Screenshot for Tridot Extension](docs/tridot-extension.js.png)
 ----
 
 
