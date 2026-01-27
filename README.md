@@ -138,11 +138,11 @@ Insert wistia transcript at caret
 ----
 
 
-## Rise Toolbox // version 0.1 
+## Tridot Extension // version 0.19 
 
-Set of tools and shortcuts for Rise
+[WIP] Download rise course content as markdown files
 
-[rise-toolbox.js](rise/rise-toolbox.js)
+[tridot-extension.js](tridot/tridot-extension.js)
 
 
 ----

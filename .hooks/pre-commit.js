@@ -5,7 +5,7 @@ const os = require('os');
 const exec = require('child_process').exec;
 
 /*
-cat ../.git/hooks/pre-commit
+cat > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 git diff-index --cached --name-only HEAD | xargs node .hooks/pre-commit.js | xargs git add
  */
 
