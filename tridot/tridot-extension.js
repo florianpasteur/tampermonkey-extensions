@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tridot Extension
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.21
+// @version      0.22
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
@@ -92,45 +92,68 @@
             const sessionId = sessionElement.dataset.sessionid;
             const isComplete = sessionElement.classList.contains('workout-complete');
             const sessionInfo = sessionElement.querySelector('.session-info')?.textContent?.trim()
-            const sessionCard = sessionElement.querySelector('.card-box-mobile') || sessionElement;
+            // const sessionCard = sessionElement.querySelector('.card-box-mobile') || sessionElement;
+            const sessionCard = sessionElement;
             const workoutType = determineWorkoutType(sessionElement);
+
+            if (isComplete) {
+                modified.push(sessionElement);
+                continue;
+            }
 
             const time = timeAmPm => () => setTime(token, memberId, sessionId, timeAmPm);
 
+            const askForTime = () => {
+                const userTime = prompt("Enter session time in HHMM format", "1330");
+                if (userTime && /^[0-2][0-9][0-5][0-9]$/.test(userTime)) {
+                    const hours = parseInt(userTime.substring(0, 2), 10);
+                    const minutes = parseInt(userTime.substring(2, 4), 10);
+                    if (hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60) {
+                        const amPmTime = (hours % 12 === 0 ? 12 : hours % 12) + ':' + (minutes < 10 ? '0' + minutes : minutes) + (hours < 12 ? 'AM' : 'PM');
+                        setTime(token, memberId, sessionId, amPmTime);
+                    } else {
+                        alert("Invalid time entered");
+                    }
+                }
+            }
+
+
             switch (workoutType) {
                 case 'swim':
-                    if (sessionInfo !== '7:00 am' && !isComplete) {
+                    if (sessionInfo !== '7:00 am') {
                         addButton("7h", time("07:00AM"), sessionCard)
                     }
-                    if (sessionInfo !== '7:00 pm' && !isComplete) {
+                    if (sessionInfo !== '7:00 pm') {
                         addButton("19h", time("07:00PM"), sessionCard)
                     }
                     break;
                 case 'bike':
-                    if (sessionInfo !== '9:00 am' && !isComplete) {
+                    if (sessionInfo !== '9:00 am') {
                         addButton("9h", time("09:00AM"), sessionCard)
                     }
-                    if (sessionInfo !== '5:00 pm' && !isComplete) {
+                    if (sessionInfo !== '5:00 pm') {
                         addButton("17h", time("05:00PM"), sessionCard)
                     }
                     break;
                 case 'run':
-                    if (sessionInfo !== '7:00 am' && !isComplete) {
+                    if (sessionInfo !== '7:00 am') {
                         addButton("7h", time("07:00AM"), sessionCard)
                     }
-                    if (sessionInfo !== '5:00 pm' && !isComplete) {
+                    if (sessionInfo !== '5:00 pm') {
                         addButton("17h", time("05:00PM"), sessionCard)
                     }
                     break;
                 case 'strength':
-                    if (sessionInfo !== '7:30 am' && !isComplete) {
+                    if (sessionInfo !== '7:30 am') {
                         addButton("7h30", time("07:30"), sessionCard)
                     }
-                    if (sessionInfo !== '5:15 pm' && !isComplete) {
+                    if (sessionInfo !== '5:15 pm') {
                         addButton("17h15", time("05:15PM"), sessionCard)
                     }
                     break;
             }
+
+            addButton("🕥", askForTime, sessionCard)
 
             modified.push(sessionElement)
         }
@@ -176,12 +199,8 @@ async function setTime(token, memberId, sessionId, timeAmPm) {
         }
     })
 
-    if (response.ok) {
-        window.location.reload();
-    } else {
-        alert(`Error updating time: ${response.statusText} ${response.statusCode}`);
-        console.log(response.data)
-    }
+    // alert(response.statusText);
+    window.location.reload();
 }
 
 function getAthleteId() {
@@ -205,7 +224,7 @@ function determineWorkoutType(sessionElement) {
 // {"token":"GITHUB_PAT","owner":"github-username","repo":"repository-name","workflowId":"workflow-file.yml","ref":"branch-or-tag-name"}
 function readGHAConfig() {
     const GHAConfigStr = localStorage.getItem('GHAConfig') || '{}';
-    let config =  JSON.parse(GHAConfigStr);
+    let config = JSON.parse(GHAConfigStr);
     for (let i = 0; i < 3; i++) {
         if (!config.token || !config.owner || !config.repo || !config.workflowId || !config.ref) {
             config = JSON.parse(prompt("Please enter GHA configuration as JSON "))
