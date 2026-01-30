@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tridot Extension
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.22
+// @version      0.23
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
@@ -145,7 +145,7 @@
                     break;
                 case 'strength':
                     if (sessionInfo !== '7:30 am') {
-                        addButton("7h30", time("07:30"), sessionCard)
+                        addButton("7h30", time("07:30AM"), sessionCard)
                     }
                     if (sessionInfo !== '5:15 pm') {
                         addButton("17h15", time("05:15PM"), sessionCard)
@@ -153,7 +153,7 @@
                     break;
             }
 
-            addButton("🕥", askForTime, sessionCard)
+            addButton("🕥", askForTime, sessionCard);
 
             modified.push(sessionElement)
         }
