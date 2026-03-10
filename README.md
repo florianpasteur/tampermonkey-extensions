@@ -148,7 +148,7 @@ Insert wistia transcript at caret
 ----
 
 
-## Tridot Extension // version 0.25 
+## Tridot Extension // version 0.26 
 
 Tridot extension to quickly set session times and send to Garmin/Zwift
 
