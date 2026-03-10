@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tridot Extension
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.24
+// @version      0.25
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/tridot/tridot-extension.js
@@ -252,9 +252,6 @@ async function triggerGHA() {
         }
     );
 
-    if (response.ok) {
-        window.open(`https://api.github.com/repos/${owner}/${repo}/dispatches`);
-    } else {
-        alert(`Error triggering GHA workflow: ${response.statusText} ${response.statusCode}`);
-    }
+    alert(`GHA workflow: ${response.statusText} ${response.statusCode}`);
+    window.open(`https://api.github.com/repos/${owner}/${repo}/dispatches`);
 }
