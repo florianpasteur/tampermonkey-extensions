@@ -108,6 +108,16 @@ Insert Wheel of names or Timer to Jira page to track daily limits
 ----
 
 
+## Marathon Photo live download photo previews // version 0.27 
+
+Download all preview photos from the marathon photos live website in one click
+
+[download-photo-previews.js](marathonphotoslive/download-photo-previews.js)
+
+
+----
+
+
 ## Declare woon-week ritten // version 0.2 
 
 Declare for the entire week (Mon to Fri) the home to work trip in one click
@@ -145,6 +155,16 @@ Insert wistia transcript at caret
 [insert-wistia-transcript.js](rise/insert-wistia-transcript.js)
 
 ![Screenshot for Rise insert wistia transcript](docs/insert-wistia-transcript.js.png)
+----
+
+
+## Modify POST Requests // version 1.1 
+
+Intercept and modify POST requests
+
+[route-with-poi.js](strava/route-with-poi.js)
+
+
 ----
 
 
@@ -225,6 +245,16 @@ Insert markdown as html at the caret in the page.
 [insert-markdown.js](utils/insert-markdown.js)
 
 
+----
+
+
+## YouTube Music Download // version 0.2 
+
+Adds a download option to YouTube Music that opens the song on sosyoutube.com
+
+[download-song.js](youtube/download-song.js)
+
+![Screenshot for YouTube Music Download](docs/download-song.js.png)
 ----
 
 
