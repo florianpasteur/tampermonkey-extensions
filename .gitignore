@@ -1,2 +1,5 @@
 .idea
 .env
+garmin-connect/gha.json
+tridot/gha.json
+.DS_Store

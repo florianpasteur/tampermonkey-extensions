@@ -248,7 +248,7 @@ Insert markdown as html at the caret in the page.
 ----
 
 
-## YouTube Music Download // version 0.2 
+## YouTube Music Download // version 0.3 
 
 Adds a download option to YouTube Music that opens the song on sosyoutube.com
 
