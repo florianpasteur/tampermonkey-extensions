@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Meet Clockify Timer
 // @namespace    https://github.com/florianpasteur/tampermonkey-extensions
-// @version      0.2
+// @version      0.3
 // @supportURL   https://github.com/florianpasteur/tampermonkey-extensions/issues
 // @updateURL    https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/google-meet/clockify-timer.js
 // @downloadURL  https://raw.githubusercontent.com/florianpasteur/tampermonkey-extensions/main/google-meet/clockify-timer.js
@@ -20,7 +20,8 @@
     'use strict';
 
     const CLOCKIFY_BASE_URL = 'https://api.clockify.me/api/v1';
-    const MEETING_PROJECT_NAME = 'meeting';
+    const MEETING_PROJECT_NAME = 'Professional Time';
+    const MEETING_TASK_NAME = 'meeting';
 
     // --- Clockify API helpers ---
 
@@ -62,14 +63,17 @@
         getWorkspaces: () => clockifyRequest('GET', '/workspaces'),
         getProjects: (workspaceId) =>
             clockifyRequest('GET', `/workspaces/${workspaceId}/projects?page-size=500&archived=false`),
+        getTasks: (workspaceId, projectId) =>
+            clockifyRequest('GET', `/workspaces/${workspaceId}/projects/${projectId}/tasks?page-size=500&is-active=true`),
         stopCurrentTimer: (workspaceId, userId) =>
             clockifyRequest('PATCH', `/workspaces/${workspaceId}/user/${userId}/time-entries`, {
                 end: new Date().toISOString(),
             }),
-        startTimer: (workspaceId, projectId, description) =>
+        startTimer: (workspaceId, projectId, taskId, description) =>
             clockifyRequest('POST', `/workspaces/${workspaceId}/time-entries`, {
                 start: new Date().toISOString(),
                 projectId,
+                taskId,
                 description,
             }),
     };
@@ -107,14 +111,29 @@
                 return;
             }
 
+            const tasks = await api.getTasks(workspaceId, meetingProject.id);
+            const meetingTask = tasks.find(
+                (t) => t.name.toLowerCase() === MEETING_TASK_NAME.toLowerCase()
+            );
+
+            if (!meetingTask) {
+                alert(
+                    `Task "${MEETING_TASK_NAME}" not found in project "${MEETING_PROJECT_NAME}".\n` +
+                    `Please create a task named exactly "${MEETING_TASK_NAME}" and run setup again.`
+                );
+                return;
+            }
+
             GM_setValue('clockify_workspace_id', workspaceId);
             GM_setValue('clockify_user_id', userId);
             GM_setValue('clockify_meeting_project_id', meetingProject.id);
+            GM_setValue('clockify_meeting_task_id', meetingTask.id);
 
             alert(
                 `Clockify configured!\n` +
                 `Workspace: ${workspaces.find((w) => w.id === workspaceId)?.name}\n` +
-                `Meeting project: ${meetingProject.name}`
+                `Project: ${meetingProject.name}\n` +
+                `Task: ${meetingTask.name}`
             );
         } catch (e) {
             alert(`Setup failed: ${e.message}`);
@@ -162,8 +181,9 @@
         const workspaceId = GM_getValue('clockify_workspace_id', '');
         const userId = GM_getValue('clockify_user_id', '');
         const projectId = GM_getValue('clockify_meeting_project_id', '');
+        const taskId = GM_getValue('clockify_meeting_task_id', '');
 
-        if (!workspaceId || !userId || !projectId) {
+        if (!workspaceId || !userId || !projectId || !taskId) {
             console.warn('[Clockify Meet] Not configured. Use the Tampermonkey menu → Configure Clockify API Key.');
             return;
         }
@@ -178,7 +198,7 @@
         }
 
         try {
-            await api.startTimer(workspaceId, projectId, meetingTitle);
+            await api.startTimer(workspaceId, projectId, taskId, meetingTitle);
             console.log('[Clockify Meet] Meeting timer started.');
             showToast(`Clockify: Meeting timer started`);
         } catch (e) {

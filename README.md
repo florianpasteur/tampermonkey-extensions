@@ -108,7 +108,7 @@ Add a button to trigger a github action from courses screen
 ----
 
 
-## Google Meet Clockify Timer // version 0.2 
+## Google Meet Clockify Timer // version 0.3 
 
 Stop the current Clockify timer and start a new "Meeting" timer when joining a Google Meet call. Stop it when leaving.
 
