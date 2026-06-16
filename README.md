@@ -58,6 +58,16 @@ Adds more data to the workout preview in campus coach, such as pace, distance at
 ----
 
 
+## Chess.com to Lichess Analysis // version 0.1 
+
+Adds a button on chess.com to open the current game's analysis on lichess.org
+
+[lichess-analysis.js](chesscom/lichess-analysis.js)
+
+
+----
+
+
 ## Decathlon country links // version 0.8 
 
 Create a link to jump between dutch and french website of decathlon on the same product
@@ -93,6 +103,16 @@ Adds an action icon to download the workout in garmin connect
 Add a button to trigger a github action from courses screen
 
 [trigger-github-action.js](garmin-connect/trigger-github-action.js)
+
+
+----
+
+
+## Google Meet Clockify Timer // version 0.2 
+
+Stop the current Clockify timer and start a new "Meeting" timer when joining a Google Meet call. Stop it when leaving.
+
+[clockify-timer.js](google-meet/clockify-timer.js)
 
 
 ----
